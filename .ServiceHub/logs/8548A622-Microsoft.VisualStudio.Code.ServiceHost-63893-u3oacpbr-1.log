@@ -1,0 +1,42 @@
+﻿05/05/2026 20:15:07 czas środkowoeuropejski standardowy : Information : Local timezone is (UTC+01:00) czas środkowoeuropejski (Warszawa)
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy : Information : Service Hub .NET service module host started. Host id: dotnet$C94B8CFE-E3FD-4BAF-A941-2866DBB566FE. Controller pipe: net.pipe://633513F564. PID: 63893
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy : Information : hubHostClr read: Content-Length: 116
+
+{"jsonrpc":"2.0","id":2,"method":"InitializeHostAsync","params":[{"HostsRootDirectory":".","AppConfigFallback":""}]}
+05/05/2026 20:15:12 czas środkowoeuropejski standardowy : Information : hubHostClr write: Content-Length: 79
+
+{"jsonrpc":"2.0","id":2,"result":"dotnet$C94B8CFE-E3FD-4BAF-A941-2866DBB566FE"}
+05/05/2026 20:15:12 czas środkowoeuropejski standardowy : Information : hubHostClr read: Content-Length: 1034
+
+{"jsonrpc":"2.0","id":3,"method":"StartServiceAsync","params":[{"name":"Microsoft.VisualStudio.TestWindow.VSCode.Service","host":"dotnet","hostId":"C94B8CFE-E3FD-4BAF-A941-2866DBB566FE","serviceBaseDirectory":"/Users/macbook/.vscode/extensions/ms-dotnettools.csdevkit-3.10.14-darwin-x64/components/VSUnitTesting/platforms/darwin-x64/node_modules/@microsoft/visualstudio-testwindow-vscode-service.darwin-x64","entryPoint":{"assemblyPath":"/Users/macbook/.vscode/extensions/ms-dotnettools.csdevkit-3.10.14-darwin-x64/components/VSUnitTesting/platforms/darwin-x64/node_modules/@microsoft/visualstudio-testwindow-vscode-service.darwin-x64/Microsoft.VisualStudio.TestWindow.VSCode.Service.dll","fullClassName":"Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory"}},{"ActivationArguments":{"__servicehub__ServiceHubRemoteServiceBrokerPipeName":"/Users/macbook/.ServiceHub/5ac5059d28/3f9d455344","__servicehub__RequestedServiceVersion":"0.1"},"ClientCredentials":{},"ClientCulture":"pl","ClientUICulture":"pl"}]}
+05/05/2026 20:15:12 czas środkowoeuropejski standardowy : Information : CLR host received start request for service 'Microsoft.VisualStudio.TestWindow.VSCode.Service'
+05/05/2026 20:15:12 czas środkowoeuropejski standardowy : Information : Loading service module assembly '/Users/macbook/.vscode/extensions/ms-dotnettools.csdevkit-3.10.14-darwin-x64/components/VSUnitTesting/platforms/darwin-x64/node_modules/@microsoft/visualstudio-testwindow-vscode-service.darwin-x64/Microsoft.VisualStudio.TestWindow.VSCode.Service.dll' from '/Users/macbook/.vscode/extensions/ms-dotnettools.csdevkit-3.10.14-darwin-x64/components/VSUnitTesting/platforms/darwin-x64/node_modules/@microsoft/visualstudio-testwindow-vscode-service.darwin-x64'
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : Starting service module 'Microsoft.VisualStudio.TestWindow.VSCode.Service'. Class: Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory, Supported Version: 
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : Started service 'Microsoft.VisualStudio.TestWindow.VSCode.Service'. Pipe name: /Users/macbook/.ServiceHub/5ac5059d28/b42e98c8ba, Supported Version: 
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : hubHostClr write: Content-Length: 84
+
+{"jsonrpc":"2.0","id":3,"result":"/Users/macbook/.ServiceHub/5ac5059d28/b42e98c8ba"}
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : A new client connected to CLR service module 'Microsoft.VisualStudio.TestWindow.VSCode.Service'
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : hubHostClr write: Content-Length: 110
+
+{"jsonrpc":"2.0","method":"HostServicesStartedAsync","params":["dotnet$C94B8CFE-E3FD-4BAF-A941-2866DBB566FE"]}
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : Found FactoryVersion=Version2 for service : Microsoft.VisualStudio.TestWindow.VSCode.Service.
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : Service 'Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory' implements IServiceHubServiceFactory. Creating factory instance and caching it.
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : Creating service Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory from factory with FactoryVersion=Version2 and ClientRequestedVersion=0.1.
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Information : Setting up RPC connection for service 'Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory' from factory
+05/05/2026 20:15:15 czas środkowoeuropejski standardowy : Information : Completed RPC connection setup for service 'Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory' from factory
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : hubHostClr write: Content-Length: 108
+
+{"jsonrpc":"2.0","method":"HostServicesEndedAsync","params":["dotnet$C94B8CFE-E3FD-4BAF-A941-2866DBB566FE"]}
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : Checking if 'Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory' implements Microsoft.VisualStudio.Threading.IAsyncDisposable.
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : Checking if 'Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory' implements System.IAsyncDisposable.
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : Checking if 'Microsoft.VisualStudio.TestWindow.VSCode.Service.TestWindowVSCodeServiceFactory' implements System.IDisposable.
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : hubHostClr read: Content-Length: 57
+
+{"jsonrpc":"2.0","id":4,"method":"ExitAsync","params":[]}
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : Exit command received. Exiting CLR host
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : hubHostClr write: Content-Length: 38
+
+{"jsonrpc":"2.0","id":4,"result":null}
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : hubHostClr JSON RPC has been disposed
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy : Information : hubHostClr read: end of stream

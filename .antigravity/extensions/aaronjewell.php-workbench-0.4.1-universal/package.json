@@ -1,0 +1,151 @@
+{
+	"name": "php-workbench",
+	"displayName": "PHP Workbench",
+	"description": "A dedicated workspace for PHP development and experimentation. Test PHP code snippets instantly - no temporary files or terminal switching required.",
+	"version": "0.4.1",
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"engines": {
+		"vscode": "^1.99.3"
+	},
+	"categories": [
+		"Programming Languages",
+		"Debuggers",
+		"Testing"
+	],
+	"keywords": [
+		"php"
+	],
+	"icon": "res/icon.png",
+	"preview": true,
+	"homepage": "https://github.com/aaronjewell/php-workbench/blob/main/README.md",
+	"bugs": {
+		"url": "https://github.com/aaronjewell/php-workbench/issues",
+		"email": "me@aaronjewell.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aaronjewell/php-workbench"
+	},
+	"publisher": "aaronjewell",
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "PHP Workbench",
+			"properties": {
+				"phpWorkbench.debug": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable debug logging in the PHP runner (writes to STDERR unless a log file is set)."
+				},
+				"phpWorkbench.logFile": {
+					"type": "string",
+					"default": "",
+					"description": "Optional path to a log file for the PHP runner. When empty, logs go to STDERR."
+				},
+				"phpWorkbench.timeout": {
+					"type": "number",
+					"default": 30,
+					"description": "Maximum execution time in seconds. When 0, the PHP runner will run indefinitely."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "phpWorkbench.newScratchpad",
+				"title": "PHP Workbench: New Scratchpad"
+			},
+			{
+				"command": "phpWorkbench.executeCode",
+				"title": "PHP Workbench: Execute Code"
+			},
+			{
+				"command": "phpWorkbench.restartSession",
+				"title": "PHP Workbench: Restart Session"
+			},
+			{
+				"command": "phpWorkbench.reportIssue",
+				"title": "PHP Workbench: Report Issue"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "phpWorkbench.newScratchpad",
+				"key": "ctrl+alt+n",
+				"mac": "cmd+alt+n"
+			},
+			{
+				"command": "phpWorkbench.executeCode",
+				"key": "ctrl+enter",
+				"mac": "cmd+enter",
+				"when": "editorTextFocus && resourceLangId == php"
+			}
+		],
+		"menus": {
+			"issue/reporter": [
+				{
+					"command": "phpWorkbench.reportIssue"
+				}
+			]
+		},
+		"viewsContainers": {
+			"panel": [
+				{
+					"id": "phpWorkbench",
+					"title": "PHP Workbench",
+					"icon": ""
+				}
+			]
+		},
+		"views": {
+			"phpWorkbench": [
+				{
+					"id": "phpWorkbench.results",
+					"name": "Results",
+					"type": "webview"
+				}
+			]
+		},
+		"taskDefinitions": [
+			{
+				"type": "php-workbench.session",
+				"label": "PHP Workbench Session"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run clean && npm run format && npm run compile && npm run build:phar",
+		"clean": "rm -rf out",
+		"copy": "mkdir -p out",
+		"precompile": "npm run clean && npm run copy",
+		"compile": "tsc -p ./",
+		"prewatch": "npm run clean && npm run copy",
+		"watch": "tsc -watch -p ./",
+		"lint": "eslint src",
+		"pretest": "npm run format && npm run compile && npm run lint",
+		"test": "vscode-test",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"build:phar": "php -dphar.readonly=0 bin/compile"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.10",
+		"@types/node": "20.x",
+		"@types/vscode": "^1.99.3",
+		"@typescript-eslint/eslint-plugin": "^8.31.1",
+		"@typescript-eslint/parser": "^8.31.1",
+		"@vscode/test-cli": "^0.0.11",
+		"@vscode/test-electron": "^2.5.2",
+		"eslint": "^9.25.1",
+		"prettier": "^3.6.2",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"vscode-jsonrpc": "^8.2.1"
+	},
+	"__metadata": {
+		"installedTimestamp": 1775473629363,
+		"targetPlatform": "universal",
+		"size": 4519457
+	}
+}

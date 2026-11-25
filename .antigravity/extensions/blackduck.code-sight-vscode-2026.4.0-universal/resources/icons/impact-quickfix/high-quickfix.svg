@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="14px" height="14px" viewBox="0 -2.203 18.435 18.203" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <title>High-Square-1x</title>
+  <desc>Created with Sketch.</desc>
+  <g id="ICONS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Artboard" transform="translate(-176.000000, -113.000000)">
+      <g id="ICONS---Small---LIGHT" transform="translate(172.000000, 113.000000)">
+        <g id="Icons" transform="translate(3.000000, 0.000000)">
+          <g id="High-Square" transform="translate(1.000000, 0.000000)">
+            <rect id="Rectangle" fill="#D61425" x="0" y="0" width="16" height="16"/>
+            <polygon id="H" fill="#FFFFFF" fill-rule="nonzero" points="4.952 3.004 6.968 3.004 6.968 6.826 9.32 6.826 9.32 3.004 11.336 3.004 11.336 13 9.32 13 9.32 8.562 6.968 8.562 6.968 13 4.952 13"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <circle style="fill: rgb(88, 157, 246);" cx="15.057" cy="1.121" r="3.254"/>
+</svg>

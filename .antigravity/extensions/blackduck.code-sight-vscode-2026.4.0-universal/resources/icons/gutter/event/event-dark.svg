@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>dot-circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,0.25 C3.71978125,0.25 0.25,3.71978125 0.25,8 C0.25,12.2802187 3.71978125,15.75 8,15.75 C12.2802187,15.75 15.75,12.2802187 15.75,8 C15.75,3.71978125 12.2802187,0.25 8,0.25 Z M10.5,8 C10.5,9.3785 9.3785,10.5 8,10.5 C6.6215,10.5 5.5,9.3785 5.5,8 C5.5,6.6215 6.6215,5.5 8,5.5 C9.3785,5.5 10.5,6.6215 10.5,8 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Solid/dot-circle">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="PURPLEBLUE" mask="url(#mask-2)" fill="#9287DA" fill-rule="evenodd">
+                <rect id="PurpleBlue" x="0" y="0" width="16" height="16"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

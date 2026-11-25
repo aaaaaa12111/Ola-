@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="12px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>caret-left-DARK-1x-1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.1471572,1.1244443 L9.1471572,14.8755794 C9.1471572,15.8277554 7.9920409,16.3045915 7.3164938,15.6313137 L0.41775282,8.75574609 C-0.00101237,8.33838756 -0.00101237,7.66163617 0.41775282,7.24427764 L7.3164938,0.368710077 C7.9920409,-0.30462122 9.1471572,0.172268343 9.1471572,1.1244443 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="caret-left-DARK-1x" transform="translate(5.000000, 8.000000) rotate(-180.000000) translate(-5.000000, -8.000000) ">
+            <g id="Mask" fill="#000000" fill-rule="nonzero">
+                <path d="M9.1471572,1.1244443 L9.1471572,14.8755794 C9.1471572,15.8277554 7.9920409,16.3045915 7.3164938,15.6313137 L0.41775282,8.75574609 C-0.00101237,8.33838756 -0.00101237,7.66163617 0.41775282,7.24427764 L7.3164938,0.368710077 C7.9920409,-0.30462122 9.1471572,0.172268343 9.1471572,1.1244443 Z" id="path-1"></path>
+            </g>
+            <g id="White-Clipped">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="White" mask="url(#mask-2)">
+                    <g transform="translate(-145.000000, -142.000000)" id="Group">
+                        <g transform="translate(0.500000, 0.500000)">
+                            <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="299" height="299"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

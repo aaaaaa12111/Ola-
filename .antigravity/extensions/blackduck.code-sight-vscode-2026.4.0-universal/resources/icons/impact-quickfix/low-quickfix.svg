@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="14px" height="14px" viewBox="0 -1.747 17.981 17.733" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <title>Low-Square</title>
+  <desc>Created with Sketch.</desc>
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Artboard" transform="translate(-176.000000, -165.000000)">
+      <g id="ICONS---Small---LIGHT" transform="translate(172.000000, 113.000000)">
+        <g id="Icons" transform="translate(3.000000, 0.000000)">
+          <g id="Low-Square" transform="translate(1.000000, 52.000000)">
+            <g>
+              <rect id="Rectangle" fill="#FFB819" width="16" height="16"/>
+            </g>
+            <polygon id="L" fill="#FFFFFF" points="5.603 13 5.603 3.004 7.619 3.004 7.619 11.348 11.189 11.348 11.189 13"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <circle style="fill: rgb(88, 157, 246);" cx="14.59" cy="1.576" r="3.254"/>
+</svg>
