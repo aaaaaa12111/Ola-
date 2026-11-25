@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+		<Metadata>
+			<Identity Language="en-US" Id="rubymate" Version="0.3.0" Publisher="BalajiR" />
+			<DisplayName>Ruby - Complete Ruby and Rails Extension - (RubyMate)</DisplayName>
+			<Description xml:space="preserve">The ultimate Ruby and Rails extension for VS Code. Features: Solargraph IntelliSense, Visual Debugger (rdbg), Test Explorer for RSpec &amp; Minitest, Rails Navigation, ERB/Haml/Slim Template Intelligence with path helpers, RuboCop Auto-format, Go to Definition, Find All References, Code Completion, Syntax Highlighting, and Smart ActiveRecord Intelligence</Description>
+			<Tags>ruby,rails,ruby extension,ruby vscode,ruby on rails,ruby support,ruby language,ruby intellisense,ruby ide,ruby debugger,ruby debug,solargraph,rspec,minitest,ruby test,test explorer,ruby testing,rubocop,ruby formatter,ruby linter,ruby autocomplete,ruby code completion,rails ide,rails development,rails debugger,rails testing,activerecord,ruby navigation,go to definition,find references,code intelligence,ruby tools,rails tools,erb,erb intellisense,haml,slim,rails templates,rails helpers,path helpers,bundler,gem,rake,ruby snippets,rails snippets,ruby syntax,syntax highlighting,ruby refactoring,rails navigation,rails generator,ruby workspace,ruby development,snippet,keybindings,debuggers,Ruby,__ext_rb,__ext_rake,__ext_gemspec,__ext_Rakefile,__ext_Gemfile,ERB,EmbeddedRuby,__ext_erb,__ext_html.erb,__ext_text.erb,Haml,__ext_haml,__ext_html.haml,Slim,__ext_slim,__ext_html.slim</Tags>
+			<Categories>Programming Languages,Debuggers,Snippets,Formatters,Testing,Linters</Categories>
+			<GalleryFlags>Public</GalleryFlags>
+			<Badges><Badge Link="https://marketplace.visualstudio.com/items?itemName=BalajiR.rubymate" ImgUri="https://img.shields.io/visual-studio-marketplace/v/BalajiR.rubymate" Description="Version" />
+<Badge Link="https://marketplace.visualstudio.com/items?itemName=BalajiR.rubymate" ImgUri="https://img.shields.io/visual-studio-marketplace/i/BalajiR.rubymate" Description="Installs" /></Badges>
+			<Properties>
+				<Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.85.0" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionKind" Value="workspace" />
+				<Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.EnabledApiProposals" Value="" />
+				
+				<Property Id="Microsoft.VisualStudio.Code.ExecutesCode" Value="true" />
+				
+				<Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/Balaji2682/rubymate.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/Balaji2682/rubymate.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/Balaji2682/rubymate.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/Balaji2682/rubymate/issues" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://github.com/Balaji2682/rubymate#readme" />
+				<Property Id="Microsoft.VisualStudio.Services.Branding.Color" Value="#CC342D" />
+				<Property Id="Microsoft.VisualStudio.Services.Branding.Theme" Value="dark" />
+				<Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
+				<Property Id="Microsoft.VisualStudio.Services.Content.Pricing" Value="Free"/>
+
+				<Property Id="Microsoft.VisualStudio.Services.EnableMarketplaceQnA" Value="true" />
+				
+			</Properties>
+			<License>extension/LICENSE.txt</License>
+			<Icon>extension/images/icon.png</Icon>
+		</Metadata>
+		<Installation>
+			<InstallationTarget Id="Microsoft.VisualStudio.Code"/>
+		</Installation>
+		<Dependencies/>
+		<Assets>
+			<Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
+			<Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/readme.md" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE.txt" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/images/icon.png" Addressable="true" />
+		</Assets>
+	</PackageManifest>

@@ -1,0 +1,837 @@
+{
+	"name": "rubymate",
+	"displayName": "Ruby - Complete Ruby and Rails Extension - (RubyMate)",
+	"description": "The ultimate Ruby and Rails extension for VS Code. Features: Solargraph IntelliSense, Visual Debugger (rdbg), Test Explorer for RSpec & Minitest, Rails Navigation, ERB/Haml/Slim Template Intelligence with path helpers, RuboCop Auto-format, Go to Definition, Find All References, Code Completion, Syntax Highlighting, and Smart ActiveRecord Intelligence",
+	"version": "0.3.0",
+	"publisher": "BalajiR",
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#CC342D",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.85.0",
+		"node": ">=20.0.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Debuggers",
+		"Snippets",
+		"Formatters",
+		"Testing",
+		"Linters"
+	],
+	"keywords": [
+		"ruby",
+		"rails",
+		"ruby extension",
+		"ruby vscode",
+		"ruby on rails",
+		"ruby support",
+		"ruby language",
+		"ruby intellisense",
+		"ruby ide",
+		"ruby debugger",
+		"ruby debug",
+		"solargraph",
+		"rspec",
+		"minitest",
+		"ruby test",
+		"test explorer",
+		"ruby testing",
+		"rubocop",
+		"ruby formatter",
+		"ruby linter",
+		"ruby autocomplete",
+		"ruby code completion",
+		"rails ide",
+		"rails development",
+		"rails debugger",
+		"rails testing",
+		"activerecord",
+		"ruby navigation",
+		"go to definition",
+		"find references",
+		"code intelligence",
+		"ruby tools",
+		"rails tools",
+		"erb",
+		"erb intellisense",
+		"haml",
+		"slim",
+		"rails templates",
+		"rails helpers",
+		"path helpers",
+		"bundler",
+		"gem",
+		"rake",
+		"ruby snippets",
+		"rails snippets",
+		"ruby syntax",
+		"syntax highlighting",
+		"ruby refactoring",
+		"rails navigation",
+		"rails generator",
+		"ruby workspace",
+		"ruby development"
+	],
+	"preview": false,
+	"qna": "marketplace",
+	"badges": [
+		{
+			"url": "https://img.shields.io/visual-studio-marketplace/v/BalajiR.rubymate",
+			"href": "https://marketplace.visualstudio.com/items?itemName=BalajiR.rubymate",
+			"description": "Version"
+		},
+		{
+			"url": "https://img.shields.io/visual-studio-marketplace/i/BalajiR.rubymate",
+			"href": "https://marketplace.visualstudio.com/items?itemName=BalajiR.rubymate",
+			"description": "Installs"
+		}
+	],
+	"activationEvents": [
+		"onLanguage:ruby",
+		"onLanguage:erb",
+		"onLanguage:haml",
+		"onLanguage:slim",
+		"workspaceContains:**/*.rb",
+		"workspaceContains:**/*.erb",
+		"workspaceContains:**/*.haml",
+		"workspaceContains:**/*.slim"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "ruby",
+				"extensions": [
+					".rb",
+					".rake",
+					".gemspec",
+					"Rakefile",
+					"Gemfile"
+				],
+				"aliases": [
+					"Ruby",
+					"ruby"
+				]
+			},
+			{
+				"id": "erb",
+				"extensions": [
+					".erb",
+					".html.erb",
+					".text.erb"
+				],
+				"aliases": [
+					"ERB",
+					"Embedded Ruby",
+					"erb"
+				],
+				"configuration": "./language-configurations/erb.json"
+			},
+			{
+				"id": "haml",
+				"extensions": [
+					".haml",
+					".html.haml"
+				],
+				"aliases": [
+					"Haml",
+					"haml"
+				],
+				"configuration": "./language-configurations/haml.json"
+			},
+			{
+				"id": "slim",
+				"extensions": [
+					".slim",
+					".html.slim"
+				],
+				"aliases": [
+					"Slim",
+					"slim"
+				],
+				"configuration": "./language-configurations/slim.json"
+			}
+		],
+		"keybindings": [
+			{
+				"key": "alt+shift+g",
+				"command": "rubymate.goToClass",
+				"when": "editorLangId == ruby"
+			},
+			{
+				"key": "alt+shift+r",
+				"command": "rubymate.navigateToRelated",
+				"when": "editorLangId == ruby"
+			},
+			{
+				"key": "alt+shift+t",
+				"command": "rubymate.toggleSpec",
+				"when": "editorLangId == ruby"
+			},
+			{
+				"key": "alt+shift+f",
+				"command": "rubymate.fileStructure",
+				"when": "editorLangId == ruby"
+			},
+			{
+				"key": "alt+shift+s",
+				"command": "rubymate.searchEverywhere",
+				"when": "editorLangId == ruby"
+			}
+		],
+		"commands": [
+			{
+				"command": "rubymate.goToClass",
+				"title": "Go to Class",
+				"category": "RubyMate",
+				"icon": "$(symbol-class)"
+			},
+			{
+				"command": "rubymate.fileStructure",
+				"title": "File Structure",
+				"category": "RubyMate",
+				"icon": "$(list-tree)"
+			},
+			{
+				"command": "rubymate.searchEverywhere",
+				"title": "Search Everywhere",
+				"category": "RubyMate",
+				"icon": "$(search)"
+			},
+			{
+				"command": "rubymate.navigateToRelated",
+				"title": "Navigate to Related File",
+				"category": "RubyMate",
+				"icon": "$(link)"
+			},
+			{
+				"command": "rubymate.toggleSpec",
+				"title": "Toggle Between Code and Spec",
+				"category": "RubyMate",
+				"icon": "$(arrow-swap)"
+			},
+			{
+				"command": "rubymate.runTest",
+				"title": "Run Test at Cursor",
+				"category": "RubyMate",
+				"icon": "$(debug-alt-small)"
+			},
+			{
+				"command": "rubymate.runTestFile",
+				"title": "Run Test File",
+				"category": "RubyMate",
+				"icon": "$(run-all)"
+			},
+			{
+				"command": "rubymate.startDebugger",
+				"title": "Start Debugger",
+				"category": "RubyMate",
+				"icon": "$(debug)"
+			},
+			{
+				"command": "rubymate.reindexWorkspace",
+				"title": "Re-index Workspace",
+				"category": "RubyMate",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "rubymate.showIndexStats",
+				"title": "Show Index Statistics",
+				"category": "RubyMate",
+				"icon": "$(graph)"
+			},
+			{
+				"command": "rubymate.validateConfiguration",
+				"title": "Validate Configuration",
+				"category": "RubyMate",
+				"icon": "$(check)"
+			},
+			{
+				"command": "rubymate.showTelemetry",
+				"title": "Show Usage Statistics",
+				"category": "RubyMate",
+				"icon": "$(graph-line)"
+			},
+			{
+				"command": "rubymate.exportTelemetry",
+				"title": "Export Telemetry Data",
+				"category": "RubyMate",
+				"icon": "$(export)"
+			},
+			{
+				"command": "rubymate.clearTelemetry",
+				"title": "Clear Telemetry Data",
+				"category": "RubyMate",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "rubymate.quickDebug",
+				"title": "Quick Debug Current File",
+				"category": "RubyMate",
+				"icon": "$(debug-start)"
+			},
+			{
+				"command": "rubymate.debugCurrentTest",
+				"title": "Debug Current Test",
+				"category": "RubyMate",
+				"icon": "$(debug-alt)"
+			},
+			{
+				"command": "rubymate.addExceptionBreakpoint",
+				"title": "Add Exception Breakpoint",
+				"category": "RubyMate",
+				"icon": "$(debug-breakpoint-conditional)"
+			},
+			{
+				"command": "rubymate.rails.showCommands",
+				"title": "Show Rails Commands",
+				"category": "Rails",
+				"icon": "$(ruby)"
+			},
+			{
+				"command": "rubymate.rails.navigateToModel",
+				"title": "Navigate to Model",
+				"category": "Rails",
+				"icon": "$(symbol-class)"
+			},
+			{
+				"command": "rubymate.rails.navigateToController",
+				"title": "Navigate to Controller",
+				"category": "Rails",
+				"icon": "$(symbol-method)"
+			},
+			{
+				"command": "rubymate.rails.navigateToView",
+				"title": "Navigate to View",
+				"category": "Rails",
+				"icon": "$(file-code)"
+			},
+			{
+				"command": "rubymate.rails.navigateToMigration",
+				"title": "Navigate to Migration",
+				"category": "Rails",
+				"icon": "$(database)"
+			},
+			{
+				"command": "rubymate.rails.navigateToSpec",
+				"title": "Navigate to Spec",
+				"category": "Rails",
+				"icon": "$(beaker)"
+			},
+			{
+				"command": "rubymate.rails.showRoutes",
+				"title": "Show Routes",
+				"category": "Rails",
+				"icon": "$(list-tree)"
+			},
+			{
+				"command": "rubymate.rails.goToRoute",
+				"title": "Go to Route",
+				"category": "Rails",
+				"icon": "$(search)"
+			},
+			{
+				"command": "rubymate.rails.generateModel",
+				"title": "Generate Model",
+				"category": "Rails",
+				"icon": "$(add)"
+			},
+			{
+				"command": "rubymate.rails.generateController",
+				"title": "Generate Controller",
+				"category": "Rails",
+				"icon": "$(add)"
+			},
+			{
+				"command": "rubymate.rails.generateMigration",
+				"title": "Generate Migration",
+				"category": "Rails",
+				"icon": "$(add)"
+			},
+			{
+				"command": "rubymate.rails.generateScaffold",
+				"title": "Generate Scaffold",
+				"category": "Rails",
+				"icon": "$(add)"
+			},
+			{
+				"command": "rubymate.rails.openConsole",
+				"title": "Open Rails Console",
+				"category": "Rails",
+				"icon": "$(terminal)"
+			},
+			{
+				"command": "rubymate.rails.showSchema",
+				"title": "Show Schema",
+				"category": "Rails",
+				"icon": "$(database)"
+			},
+			{
+				"command": "rubymate.rails.goToTableDefinition",
+				"title": "Go to Table Definition",
+				"category": "Rails",
+				"icon": "$(go-to-file)"
+			},
+			{
+				"command": "rubymate.rails.runMigrations",
+				"title": "Run Migrations",
+				"category": "Rails",
+				"icon": "$(play)"
+			},
+			{
+				"command": "rubymate.rails.rollbackMigration",
+				"title": "Rollback Migration",
+				"category": "Rails",
+				"icon": "$(debug-reverse-continue)"
+			},
+			{
+				"command": "rubymate.rails.goToConcern",
+				"title": "Go to Concern",
+				"category": "Rails",
+				"icon": "$(symbol-namespace)"
+			},
+			{
+				"command": "rubymate.database.showSchema",
+				"title": "Show Database Schema",
+				"category": "Database",
+				"icon": "$(database)"
+			},
+			{
+				"command": "rubymate.database.goToTable",
+				"title": "Go to Table Definition",
+				"category": "Database",
+				"icon": "$(go-to-file)"
+			},
+			{
+				"command": "rubymate.database.generateMigration",
+				"title": "Generate Migration from Model",
+				"category": "Database",
+				"icon": "$(add)"
+			},
+			{
+				"command": "rubymate.database.reloadSchema",
+				"title": "Reload Database Schema",
+				"category": "Database",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "rubymate.database.openConsole",
+				"title": "Open Database Console",
+				"category": "Database",
+				"icon": "$(terminal)"
+			},
+			{
+				"command": "rubymate.database.runQuery",
+				"title": "Run SQL Query",
+				"category": "Database",
+				"icon": "$(play)"
+			},
+			{
+				"command": "rubymate.database.showColumns",
+				"title": "Show Table Columns",
+				"category": "Database",
+				"icon": "$(list-tree)"
+			},
+			{
+				"command": "rubymate.showCallHierarchy",
+				"title": "Show Call Hierarchy",
+				"category": "Navigation",
+				"icon": "$(call-hierarchy)"
+			},
+			{
+				"command": "rubymate.showTypeHierarchy",
+				"title": "Show Type Hierarchy",
+				"category": "Navigation",
+				"icon": "$(type-hierarchy)"
+			},
+			{
+				"command": "rubymate.findAllSubclasses",
+				"title": "Find All Subclasses",
+				"category": "Navigation",
+				"icon": "$(symbol-class)"
+			},
+			{
+				"command": "rubymate.findAllReferences",
+				"title": "Find All References",
+				"category": "Navigation",
+				"icon": "$(references)"
+			},
+			{
+				"command": "rubymate.goToRelatedFiles",
+				"title": "Go to Related Files",
+				"category": "Navigation",
+				"icon": "$(files)"
+			},
+			{
+				"command": "rubymate.findViewForAction",
+				"title": "Find View for Controller Action",
+				"category": "Navigation",
+				"icon": "$(file-code)"
+			},
+			{
+				"command": "rubymate.showRouteInfo",
+				"title": "Show Route Information",
+				"category": "Navigation",
+				"icon": "$(info)"
+			},
+			{
+				"command": "rubymate.detectDeadCode",
+				"title": "Detect Dead Code",
+				"category": "Analysis",
+				"icon": "$(warning)"
+			},
+			{
+				"command": "rubymate.smartSearch",
+				"title": "Smart Search",
+				"category": "Search",
+				"icon": "$(search)"
+			},
+			{
+				"command": "rubymate.reindexStimulus",
+				"title": "Re-index Stimulus Controllers",
+				"category": "Hotwire",
+				"icon": "$(refresh)"
+			}
+		],
+		"snippets": [
+			{
+				"language": "ruby",
+				"path": "./snippets/ruby.json"
+			},
+			{
+				"language": "ruby",
+				"path": "./snippets/rails.json"
+			}
+		],
+		"configuration": {
+			"title": "RubyMate",
+			"properties": {
+				"rubymate.enableSolargraph": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable Solargraph for enhanced completions"
+				},
+				"rubymate.formatOnSave": {
+					"type": "boolean",
+					"default": false,
+					"description": "Auto-format Ruby files on save using RuboCop"
+				},
+				"rubymate.rubyPath": {
+					"type": "string",
+					"default": "ruby",
+					"description": "Path to Ruby executable"
+				},
+				"rubymate.gemPath": {
+					"type": "string",
+					"default": "",
+					"description": "Path to gems directory (optional)"
+				},
+				"rubymate.enableRailsSupport": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable Rails-specific features"
+				},
+				"rubymate.testFramework": {
+					"type": "string",
+					"enum": [
+						"rspec",
+						"minitest",
+						"auto"
+					],
+					"default": "auto",
+					"description": "Test framework to use"
+				},
+				"rubymate.enableN1Detection": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable N+1 query detection for ActiveRecord"
+				},
+				"rubymate.n1DetectionExcludePaths": {
+					"type": "array",
+					"default": [],
+					"description": "Glob patterns to exclude from N+1 detection (e.g., '**/lib/**', '**/services/**')",
+					"items": {
+						"type": "string"
+					}
+				},
+				"rubymate.autoInsertEnd": {
+					"type": "boolean",
+					"default": true,
+					"description": "Automatically insert 'end' keyword when creating Ruby blocks (def, class, if, etc.)"
+				},
+				"rubymate.hotwire.enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable Hotwire stack support (Stimulus, Turbo Streams, Turbo Frames, Turbo Drive)"
+				},
+				"rubymate.hotwire.stimulusPath": {
+					"type": "string",
+					"default": "app/javascript/controllers",
+					"description": "Path to Stimulus controllers directory (relative to workspace root)"
+				}
+			}
+		},
+		"debuggers": [
+			{
+				"type": "ruby",
+				"label": "Ruby Debug (rdbg)",
+				"languages": [
+					"ruby"
+				],
+				"configurationAttributes": {
+					"launch": {
+						"required": [
+							"program"
+						],
+						"properties": {
+							"program": {
+								"type": "string",
+								"description": "Absolute path to the Ruby file to debug",
+								"default": "${file}"
+							},
+							"args": {
+								"type": "array",
+								"description": "Command line arguments passed to the program",
+								"default": []
+							},
+							"cwd": {
+								"type": "string",
+								"description": "Working directory of the program being debugged",
+								"default": "${workspaceFolder}"
+							},
+							"env": {
+								"type": "object",
+								"description": "Environment variables defined as key-value pairs",
+								"default": {}
+							},
+							"useBundler": {
+								"type": "boolean",
+								"description": "Use bundle exec to run the debugger",
+								"default": true
+							},
+							"stopOnEntry": {
+								"type": "boolean",
+								"description": "Automatically stop after launch",
+								"default": false
+							},
+							"showDebuggerOutput": {
+								"type": "boolean",
+								"description": "Show debugger output in the debug console",
+								"default": false
+							},
+							"pathMappings": {
+								"type": "object",
+								"description": "Path mappings for remote debugging",
+								"default": {}
+							},
+							"debuggerStartupTimeout": {
+								"type": "number",
+								"description": "Timeout in milliseconds for the debugger to start (increase for large Rails apps)",
+								"default": 15000
+							},
+							"useTerminal": {
+								"type": "boolean",
+								"description": "Run debugger in integrated terminal (required for interactive apps like rails console)",
+								"default": false
+							},
+							"disableSpring": {
+								"type": "boolean",
+								"description": "Disable Rails Spring preloader (recommended for debugging)",
+								"default": false
+							},
+							"rubyVersionManager": {
+								"type": "string",
+								"enum": [
+									"auto",
+									"rbenv",
+									"rvm",
+									"asdf",
+									"mise",
+									"chruby",
+									"none"
+								],
+								"description": "Ruby version manager to use for PATH setup",
+								"default": "auto"
+							}
+						}
+					},
+					"attach": {
+						"properties": {
+							"remoteHost": {
+								"type": "string",
+								"description": "Remote host to attach to",
+								"default": "localhost"
+							},
+							"remotePort": {
+								"type": "number",
+								"description": "Remote port to attach to",
+								"default": 12345
+							},
+							"cwd": {
+								"type": "string",
+								"description": "Working directory",
+								"default": "${workspaceFolder}"
+							},
+							"pathMappings": {
+								"type": "object",
+								"description": "Path mappings for remote debugging",
+								"default": {}
+							}
+						}
+					}
+				},
+				"initialConfigurations": [
+					{
+						"type": "ruby",
+						"request": "launch",
+						"name": "Debug Current File",
+						"program": "${file}",
+						"cwd": "${workspaceFolder}",
+						"useBundler": true
+					},
+					{
+						"type": "ruby",
+						"request": "launch",
+						"name": "Debug Rails Server",
+						"program": "${workspaceFolder}/bin/rails",
+						"args": [
+							"server"
+						],
+						"cwd": "${workspaceFolder}",
+						"useBundler": true,
+						"env": {
+							"RAILS_ENV": "development"
+						}
+					},
+					{
+						"type": "ruby",
+						"request": "launch",
+						"name": "Run RSpec - Current File",
+						"program": "${workspaceFolder}/bin/rspec",
+						"args": [
+							"${file}"
+						],
+						"cwd": "${workspaceFolder}",
+						"useBundler": true
+					},
+					{
+						"type": "ruby",
+						"request": "attach",
+						"name": "Attach to Remote",
+						"remoteHost": "localhost",
+						"remotePort": 12345
+					}
+				],
+				"configurationSnippets": [
+					{
+						"label": "Ruby: Debug Current File",
+						"description": "Debug the currently open Ruby file",
+						"body": {
+							"type": "ruby",
+							"request": "launch",
+							"name": "Debug Current File",
+							"program": "^\"\\${file}\"",
+							"cwd": "^\"\\${workspaceFolder}\"",
+							"useBundler": true
+						}
+					},
+					{
+						"label": "Ruby: Debug Rails Server",
+						"description": "Debug Rails server",
+						"body": {
+							"type": "ruby",
+							"request": "launch",
+							"name": "Debug Rails Server",
+							"program": "^\"\\${workspaceFolder}/bin/rails\"",
+							"args": [
+								"server"
+							],
+							"cwd": "^\"\\${workspaceFolder}\"",
+							"useBundler": true
+						}
+					},
+					{
+						"label": "Ruby: Debug RSpec Test",
+						"description": "Debug RSpec test file",
+						"body": {
+							"type": "ruby",
+							"request": "launch",
+							"name": "Debug RSpec Test",
+							"program": "^\"\\${workspaceFolder}/bin/rspec\"",
+							"args": [
+								"^\"\\${file}\""
+							],
+							"cwd": "^\"\\${workspaceFolder}\"",
+							"useBundler": true
+						}
+					},
+					{
+						"label": "Ruby: Attach to Remote Debugger",
+						"description": "Attach to a remote Ruby debugger",
+						"body": {
+							"type": "ruby",
+							"request": "attach",
+							"name": "Attach to Remote",
+							"remoteHost": "localhost",
+							"remotePort": 12345
+						}
+					}
+				]
+			}
+		],
+		"breakpoints": [
+			{
+				"language": "ruby"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile:prod",
+		"compile": "node esbuild.js",
+		"compile:prod": "node esbuild.js --production",
+		"watch": "node esbuild.js --watch",
+		"pretest": "npm run compile && tsc -p ./",
+		"test": "node ./out/test/runTest.js",
+		"test:unit": "npm run pretest && node ./out/test/runTest.js",
+		"package": "npm run compile:prod && vsce package",
+		"publish": "npm run compile:prod && vsce publish",
+		"analyze": "npm run compile:prod && echo 'Check bundle analysis above'"
+	},
+	"dependencies": {
+		"@vscode/debugadapter": "^1.65.0",
+		"@vscode/debugprotocol": "^1.65.0",
+		"vscode-languageclient": "^9.0.1"
+	},
+	"devDependencies": {
+		"@types/chai": "^5.2.3",
+		"@types/glob": "^8.1.0",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^20.0.0",
+		"@types/vscode": "^1.85.0",
+		"@vscode/test-electron": "^2.5.2",
+		"@vscode/vsce": "^3.7.1",
+		"chai": "^6.2.2",
+		"esbuild": "0.25.0",
+		"glob": "^13.0.0",
+		"mocha": "^11.7.5",
+		"typescript": "^5.3.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Balaji2682/rubymate.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Balaji2682/rubymate/issues"
+	},
+	"homepage": "https://github.com/Balaji2682/rubymate#readme",
+	"pricing": "Free",
+	"license": "MIT",
+	"__metadata": {
+		"installedTimestamp": 1775473625528,
+		"targetPlatform": "universal",
+		"size": 999640
+	}
+}

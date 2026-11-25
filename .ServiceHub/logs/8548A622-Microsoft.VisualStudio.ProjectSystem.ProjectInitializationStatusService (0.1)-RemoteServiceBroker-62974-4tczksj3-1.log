@@ -1,0 +1,15 @@
+﻿05/05/2026 20:15:11 czas środkowoeuropejski standardowy : Information : Local timezone is (UTC+01:00) czas środkowoeuropejski (Warszawa)
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy: Information : 3 :Listening started.
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy: Information : 7 :{"id":2,"method":"handshake"}
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy: Information : 6 :Received request "2" for method "handshake".
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy: Information : 9 :Invoking Microsoft.ServiceHub.Framework.IRemoteServiceBroker.HandshakeAsync(ServiceBrokerClientMetadata, CancellationToken)
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy : Start : handshake
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy : Stop : handshake
+05/05/2026 20:15:11 czas środkowoeuropejski standardowy: Information : 8 :{"id":2}
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy: Information : 7 :{"id":3,"method":"requestServiceChannel"}
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy: Information : 6 :Received request "3" for method "requestServiceChannel".
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy: Information : 9 :Invoking Microsoft.ServiceHub.Framework.IRemoteServiceBroker.RequestServiceChannelAsync(ServiceMoniker, ServiceActivationOptions, CancellationToken)
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Start : requestServiceChannel
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy : Stop : requestServiceChannel
+05/05/2026 20:15:13 czas środkowoeuropejski standardowy: Information : 8 :{"id":3}
+05/06/2026 00:00:47 czas środkowoeuropejski standardowy: Information : 13 :Connection closing (RemotePartyTerminated: Osiągnięto koniec strumienia.). 

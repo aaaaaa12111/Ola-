@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="12px" viewBox="0 0 21 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 15-1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M6.5,0.203125 C3.02234766,0.203125 0.203125,3.02232227 0.203125,6.5 C0.203125,9.97767773 3.02234766,12.796875 6.5,12.796875 C9.97765234,12.796875 12.796875,9.97765234 12.796875,6.5 C12.796875,3.02234766 9.97767773,0.203125 6.5,0.203125 Z M9.80352344,3.19647656 C11.4652891,4.85824219 11.5808672,7.39814258 10.3285254,9.17944727 L3.82052734,2.6715 C5.60305078,1.41832031 8.14267188,1.53565039 9.80352344,3.19647656 Z M3.19647656,9.80352344 C1.53471094,8.14175781 1.41913281,5.60185742 2.67147461,3.82055273 L9.17947266,10.3285 C7.39697461,11.5816797 4.85732812,11.464375 3.19647656,9.80352344 Z" id="path-1"></path>
+        <path d="M6.5,0.203125 C3.02234766,0.203125 0.203125,3.02232227 0.203125,6.5 C0.203125,9.97767773 3.02234766,12.796875 6.5,12.796875 C9.97765234,12.796875 12.796875,9.97765234 12.796875,6.5 C12.796875,3.02234766 9.97767773,0.203125 6.5,0.203125 Z" id="path-3"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-173.000000, -1811.000000)">
+            <g id="Group-15" transform="translate(173.000000, 1811.000000)">
+                <g id="Solid/ban" transform="translate(3.000000, 3.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#C46161" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    <path d="M3.19647656,9.80352344 C1.53471094,8.14175781 1.41913281,5.60185742 2.67147461,3.82055273 L9.17947266,10.3285 C7.39697461,11.5816797 4.85732812,11.464375 3.19647656,9.80352344 Z" id="Path" fill="#4F7E38" fill-rule="evenodd" mask="url(#mask-2)"></path>
+                    <g id="Green" mask="url(#mask-2)" fill="#89B335" fill-rule="evenodd">
+                        <rect id="SWIP-Granny" x="0" y="0" width="13" height="13"></rect>
+                    </g>
+                </g>
+                <g id="Solid/ban">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+                    <g id="Green" mask="url(#mask-4)" fill="#89B335" fill-rule="evenodd">
+                        <rect id="SWIP-Granny" x="0" y="0" width="13" height="13"></rect>
+                    </g>
+                    <path d="M3.19647656,9.80352344 C1.53471094,8.14175781 1.41913281,5.60185742 2.67147461,3.82055273 L9.17947266,10.3285 C7.39697461,11.5816797 4.85732812,11.464375 3.19647656,9.80352344 Z" id="Path" fill="#FFFFFF" fill-rule="evenodd" mask="url(#mask-4)"></path>
+                    <path d="M9.80352344,3.19647656 C11.4652891,4.85824219 11.5808672,7.39814258 10.3285254,9.17944727 L3.82052734,2.6715 C5.60305078,1.41832031 8.14267188,1.53565039 9.80352344,3.19647656 Z" id="Path" fill="#FFFFFF" fill-rule="evenodd" mask="url(#mask-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

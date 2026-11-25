@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 24 24" version="1.1" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Multi-Shield-Alert-Group" transform="translate(1.000000, 1.000000)">
+            <!-- Background shield (positioned behind and offset) -->
+            <g id="Background-Shield" transform="translate(5.000000, 0.000000)">
+                <g fill="#313335" stroke="#9287DA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 9.5c0 3.75-2.625 5.625-5.745 6.7125a0.75 0.75 0 0 1-.5025-.0075C5.625 15.125 3 13.25 3 9.5V4.5a0.75 0.75 0 0 1 0.75-0.75c1.5 0 3.375-0.9 4.68-2.04a0.8775 0.8775 0 0 1 1.14 0C10.875 2.85 12.75 3.75 14.25 3.75a0.75 0.75 0 0 1 0.75 0.75z"/>
+                    <path d="M8.5 6v3"/>
+                    <path d="M8.5 12h.0075"/>
+                </g>
+            </g>
+            <!-- Foreground shield (main shield in front) -->
+            <g id="Foreground-Shield" transform="translate(0.000000, 0.000000)">
+                <g fill="#FFFFFF" stroke="#9287DA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 9.5c0 3.75-2.625 5.625-5.745 6.7125a0.75 0.75 0 0 1-.5025-.0075C5.625 15.125 3 13.25 3 9.5V4.5a0.75 0.75 0 0 1 0.75-0.75c1.5 0 3.375-0.9 4.68-2.04a0.8775 0.8775 0 0 1 1.14 0C10.875 2.85 12.75 3.75 14.25 3.75a0.75 0.75 0 0 1 0.75 0.75z"/>
+                    <path d="M8.5 6v3"/>
+                    <path d="M8.5 12h.0075"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
