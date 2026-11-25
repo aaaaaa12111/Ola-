@@ -1,0 +1,1246 @@
+{
+	"name": "code-sight-vscode",
+	"publisher": "blackduck",
+	"displayName": "Code Sight (Security)",
+	"description": "Find and fix security and quality issues in source code and open source dependencies before you commit.",
+	"version": "2026.4.0",
+	"repository": {},
+	"icon": "resources/icons/extension-logo.png",
+	"license": "SEE LICENSE IN LICENSE",
+	"engines": {
+		"vscode": "^1.78.0",
+		"node": ">=18.19.1 <= 18.99.99",
+		"npm": ">=10.2.4 <= 10.99.99"
+	},
+	"homepage": "https://www.blackduck.com",
+	"keywords": [
+		"SAST",
+		"Security",
+		"Blackduck",
+		"Coverity",
+		"Codesight",
+		"Code Sight",
+		"SCA",
+		"Static analysis",
+		"Software composition analysis",
+		"Open source analysis",
+		"Black Duck",
+		"Analysis"
+	],
+	"categories": [
+		"Programming Languages",
+		"Linters",
+		"Testing",
+		"Debuggers",
+		"Education",
+		"Other"
+	],
+	"qna": false,
+	"activationEvents": [
+		"*"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"chatParticipants": [
+			{
+				"id": "codesight-scan-helper.codesight",
+				"fullName": "Black Duck Assist",
+				"name": "blackduck-assist",
+				"description": "Try '/code-sight-getting-started'",
+				"isSticky": true,
+				"commands": [
+					{
+						"name": "code-sight-getting-started",
+						"description": "Get started with Code Sight"
+					},
+					{
+						"name": "code-sight-configure-coverity-scan",
+						"description": "Start scanning with Coverity"
+					},
+					{
+						"name": "code-sight-configure-polaris-scan",
+						"description": "Start scanning with Polaris"
+					},
+					{
+						"name": "code-sight-configure-rapid-scan-static-scan",
+						"description": "Start scanning with Rapid Scan Static"
+					},
+					{
+						"name": "code-sight-configure-black-duck-sca-scan",
+						"description": "Start scanning with Black Duck SCA"
+					},
+					{
+						"name": "code-sight-view-polaris-server-issues",
+						"description": "View Polaris issues in Code Sight"
+					},
+					{
+						"name": "code-sight-view-coverity-server-issues",
+						"description": "View Coverity issues in Code Sight"
+					}
+				]
+			}
+		],
+		"colors": [
+			{
+				"id": "codesight.signal.foreground",
+				"description": "Signal issue text color",
+				"defaults": {
+					"dark": "#D3AF37",
+					"light": "#9E892B"
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "codesight.openTeamViewFilterView.filtersApplied",
+				"title": "%command.codesight.openTeamViewFilterView%",
+				"enablement": "codesight.setupComplete && codesight.showTeamViewFilter && codesight.hasFiltersApplied && !codesight.teamViewSimpleView"
+			},
+			{
+				"command": "codesight.show.local.view.markers",
+				"title": "%command.codesight.show.local.view.markers.title%",
+				"icon": {
+					"dark": "resources/icons/toggle-team-view-dark.svg",
+					"light": "resources/icons/toggle-team-view-light.svg"
+				},
+				"when": "codesight.setupComplete && codesight.localViewMarkers && codesight.editorMarkersEnabled && codesight.isEditorMarkersEnabledFromSettings && codesight.hasLocalViewResults"
+			},
+			{
+				"command": "codesight.show.team.view.markers",
+				"title": "%command.codesight.show.team.view.markers.title%",
+				"icon": {
+					"dark": "resources/icons/toggle-local-view-dark.svg",
+					"light": "resources/icons/toggle-local-view-light.svg"
+				},
+				"when": "codesight.setupComplete && !codesight.localViewMarkers && codesight.editorMarkersEnabled && codesight.isEditorMarkersEnabledFromSettings && codesight.hasTeamViewResults"
+			},
+			{
+				"command": "codesight.local.view.issues.restore.full.list",
+				"title": "%command.codesight.back.to.issues.title%",
+				"icon": {
+					"dark": "resources/icons/general/arrow-circle-left-dark.svg",
+					"light": "resources/icons/general/arrow-circle-left-light.svg"
+				},
+				"when": "codesight.setupComplete && codesight.localViewSimpleView"
+			},
+			{
+				"command": "codesight.team.view.issues.restore.full.list",
+				"title": "%command.codesight.back.to.issues.title%",
+				"icon": {
+					"dark": "resources/icons/general/arrow-circle-left-dark.svg",
+					"light": "resources/icons/general/arrow-circle-left-light.svg"
+				},
+				"when": "codesight.setupComplete && codesight.teamViewSimpleView"
+			},
+			{
+				"command": "codesight.openTeamViewFilterView.noFiltersApplied",
+				"title": "%command.codesight.openTeamViewFilterView%",
+				"enablement": "codesight.setupComplete && codesight.showTeamViewFilter && !codesight.hasFiltersApplied && !codesight.teamViewSimpleView"
+			},
+			{
+				"command": "codesight.teamViewFilterView.disableActiveFileFilter",
+				"title": "%command.codesight.disableActiveFileFilter%",
+				"enablement": "codesight.setupComplete && codesight.showTeamViewFilter && codesight.editorMarkersEnabled && codesight.hasActiveFileFilter"
+			},
+			{
+				"command": "codesight.teamViewFilterView.enableActiveFileFilter",
+				"title": "%command.codesight.enableActiveFileFilter%",
+				"enablement": "codesight.setupComplete && codesight.showTeamViewFilter && codesight.editorMarkersEnabled && !codesight.hasActiveFileFilter"
+			},
+			{
+				"command": "codesight.openLocalViewFilterView.filtersApplied",
+				"title": "%command.codesight.openLocalViewFilterView%",
+				"enablement": "codesight.setupComplete && codesight.showLocalViewFilter && codesight.hasLocalViewFiltersApplied && !codesight.localViewSimpleView"
+			},
+			{
+				"command": "codesight.openLocalViewFilterView.noFiltersApplied",
+				"title": "%command.codesight.openLocalViewFilterView%",
+				"enablement": "codesight.setupComplete && codesight.showLocalViewFilter && !codesight.hasLocalViewFiltersApplied && !codesight.localViewSimpleView"
+			},
+			{
+				"command": "codesight.localViewFilterView.disableActiveFileFilter",
+				"title": "%command.codesight.disableActiveFileFilter%",
+				"enablement": "codesight.setupComplete && codesight.showLocalViewFilter && codesight.scanModeManual && codesight.editorMarkersEnabled && codesight.hasLocalViewActiveFileFilter && !codesight.localViewSimpleView && !codesight.aiEnabled"
+			},
+			{
+				"command": "codesight.localViewFilterView.enableActiveFileFilter",
+				"title": "%command.codesight.enableActiveFileFilter%",
+				"enablement": "codesight.setupComplete && codesight.showLocalViewFilter && codesight.scanModeManual && codesight.editorMarkersEnabled && !codesight.hasLocalViewActiveFileFilter && !codesight.localViewSimpleView && !codesight.aiEnabled"
+			},
+			{
+				"command": "codesight.ai.enable",
+				"title": "Enable AI",
+				"icon": {
+					"dark": "resources/icons/general/sparkle-grey.svg",
+					"light": "resources/icons/general/sparkle-grey.svg"
+				},
+				"enablement": "codesight.setupComplete && codesight.signalView && !codesight.aiEnabled"
+			},
+			{
+				"command": "codesight.ai.disable",
+				"title": "Disable AI",
+				"icon": {
+					"dark": "resources/icons/general/sparkle.svg",
+					"light": "resources/icons/general/sparkle.svg"
+				},
+				"enablement": "codesight.setupComplete && codesight.signalView && codesight.aiEnabled"
+			},
+			{
+				"command": "codesight.signal.view.refresh",
+				"title": "Refresh Signal Scan",
+				"icon": "$(refresh)",
+				"enablement": "codesight.setupComplete && codesight.aiEnabled && !codesight.localViewSignalScanRunning"
+			},
+			{
+				"command": "codesight.signal.view.cancel",
+				"title": "Cancel Signal Scan",
+				"icon": {
+					"dark": "resources/icons/general/times-circle-dark.svg",
+					"light": "resources/icons/general/times-circle-light.svg"
+				},
+				"enablement": "codesight.setupComplete && codesight.aiEnabled && codesight.localViewSignalScanRunning"
+			},
+			{
+				"command": "codesight.sigma.changed.file.refresh",
+				"title": "Refresh Sigma Scan",
+				"icon": "$(refresh)",
+				"enablement": "codesight.setupComplete && !codesight.localViewSigmaChangedFileScanRunning"
+			},
+			{
+				"command": "codesight.sigma.changed.file.cancel",
+				"title": "Cancel Sigma Scan",
+				"icon": {
+					"dark": "resources/icons/general/times-circle-dark.svg",
+					"light": "resources/icons/general/times-circle-light.svg"
+				},
+				"enablement": "codesight.setupComplete && codesight.localViewSigmaChangedFileScanRunning"
+			},
+			{
+				"command": "codesight.copyTreeItem",
+				"title": "%command.copy.title%"
+			},
+			{
+				"command": "codesight.copyAllIssues",
+				"title": "%command.copy.all.issues.title%"
+			},
+			{
+				"command": "codesight.openProxySettings",
+				"title": "%command.codesight.openProxySettings.title%",
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.local.view.search",
+				"title": "%command.codesight.search.title%",
+				"icon": {
+					"dark": "resources/icons/search-dark.svg",
+					"light": "resources/icons/search-light.svg"
+				},
+				"enablement": "codesight.setupComplete && !codesight.localViewSimpleView"
+			},
+			{
+				"command": "codesight.refresh.remote",
+				"title": "%command.codesight.remote.refresh.title%",
+				"icon": {
+					"dark": "resources/icons/general/reload-dark.svg",
+					"light": "resources/icons/general/reload-light.svg"
+				}
+			},
+			{
+				"command": "codesight.local.view.export.results",
+				"title": "%command.codesight.local.view.export.results.title%",
+				"icon": "$(export)",
+				"enablement": "codesight.hasExportableResultsFile"
+			},
+			{
+				"command": "codesight.local.view.export.results.disabled.not.manual",
+				"title": "%command.codesight.local.view.export.results.disabled.not.manual%",
+				"icon": "$(export)",
+				"enablement": "false"
+			},
+			{
+				"command": "codesight.local.view.export.results.disabled.no.results",
+				"title": "%command.codesight.local.view.export.results.disabled.no.results%",
+				"icon": "$(export)",
+				"enablement": "false"
+			},
+			{
+				"command": "codesight.local.view.export.results.disabled.unsupported.scan.type",
+				"title": "%command.codesight.local.view.export.results.disabled.unsupported.scan.type%",
+				"icon": "$(export)",
+				"enablement": "false"
+			},
+			{
+				"command": "codesight.local.view.scan",
+				"title": "%command.codesight.local.view.run.button.title%",
+				"icon": {
+					"dark": "resources/icons/scan/play-dark.svg",
+					"light": "resources/icons/scan/play-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.local.view.issues.sort.select",
+				"title": "%command.codesight.sortIssues.title%",
+				"icon": {
+					"dark": "resources/icons/sort/sort-up-down-dark.svg",
+					"light": "resources/icons/sort/sort-up-down-light.svg"
+				},
+				"enablement": "codesight.setupComplete && !codesight.localViewSimpleView"
+			},
+			{
+				"command": "codesight.openAutoScanConfig",
+				"title": "%command.codesight.openAutoScanConfig%",
+				"icon": {
+					"dark": "resources/icons/general/settings-dark.svg",
+					"light": "resources/icons/general/settings-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.openScanConfig",
+				"title": "%command.codesight.openScanConfig%",
+				"icon": {
+					"dark": "resources/icons/general/settings-dark.svg",
+					"light": "resources/icons/general/settings-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.scan.disabled",
+				"title": "%command.codesight.scan.title.disabled%",
+				"icon": {
+					"dark": "resources/icons/scan/play-disabled-dark.svg",
+					"light": "resources/icons/scan/play-disabled-light.svg"
+				},
+				"enablement": "false"
+			},
+			{
+				"command": "codesight.turn.off.auto.mode",
+				"title": "%command.codesight.turn.off.auto.mode.title%",
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.turn.on.auto.mode",
+				"title": "%command.codesight.turn.on.auto.mode.title%",
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.local.view.cancel.scan",
+				"title": "%command.codesight.cancel.scan.title%",
+				"icon": {
+					"dark": "resources/icons/general/times-circle-dark.svg",
+					"light": "resources/icons/general/times-circle-light.svg"
+				}
+			},
+			{
+				"command": "codesight.openLocalViewFilterView.filtersApplied",
+				"title": "%command.codesight.openLocalViewFilterView%",
+				"enablement": "codesight.setupComplete && !codesight.localViewSimpleView",
+				"icon": {
+					"dark": "resources/icons/filter-dark.svg",
+					"light": "resources/icons/filter-light.svg"
+				}
+			},
+			{
+				"command": "codesight.openLocalViewFilterView.noFiltersApplied",
+				"title": "%command.codesight.openLocalViewFilterView%",
+				"enablement": "codesight.setupComplete && !codesight.localViewSimpleView",
+				"icon": {
+					"dark": "resources/icons/filter-hollow-dark.svg",
+					"light": "resources/icons/filter-hollow-light.svg"
+				}
+			},
+			{
+				"command": "codesight.localViewFilterView.disableActiveFileFilter",
+				"title": "%command.codesight.disableActiveFileFilter%",
+				"enablement": "codesight.setupComplete && !codesight.localViewSimpleView",
+				"icon": {
+					"dark": "resources/icons/file-filter-dark.svg",
+					"light": "resources/icons/file-filter-light.svg"
+				}
+			},
+			{
+				"command": "codesight.localViewFilterView.enableActiveFileFilter",
+				"title": "%command.codesight.enableActiveFileFilter%",
+				"enablement": "codesight.setupComplete && !codesight.localViewSimpleView",
+				"icon": {
+					"dark": "resources/icons/file-filter-hollow-dark.svg",
+					"light": "resources/icons/file-filter-hollow-light.svg"
+				}
+			},
+			{
+				"command": "codesight.diffSource.all",
+				"title": "%command.codesight.diffSource.all.title%",
+				"icon": {
+					"dark": "resources/icons/issue-diff-filter/all-dark.svg",
+					"light": "resources/icons/issue-diff-filter/all-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.diffSource.all.pressed",
+				"title": "%command.codesight.diffSource.all.title%",
+				"icon": {
+					"dark": "resources/icons/issue-diff-filter/all-selected-dark.svg",
+					"light": "resources/icons/issue-diff-filter/all-selected-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.diffSource.new",
+				"title": "%command.codesight.diffSource.new.title%",
+				"icon": {
+					"dark": "resources/icons/issue-diff-filter/new-dark.svg",
+					"light": "resources/icons/issue-diff-filter/new-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.diffSource.new.pressed",
+				"title": "%command.codesight.diffSource.new.title%",
+				"icon": {
+					"dark": "resources/icons/issue-diff-filter/new-selected-dark.svg",
+					"light": "resources/icons/issue-diff-filter/new-selected-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.diffSource.fixed",
+				"title": "%command.codesight.diffSource.fixed.title%",
+				"icon": {
+					"dark": "resources/icons/issue-diff-filter/absent-dark.svg",
+					"light": "resources/icons/issue-diff-filter/absent-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.diffSource.fixed.pressed",
+				"title": "%command.codesight.diffSource.fixed.title%",
+				"icon": {
+					"dark": "resources/icons/issue-diff-filter/absent-selected-dark.svg",
+					"light": "resources/icons/issue-diff-filter/absent-selected-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.inverseSortUp",
+				"title": "%command.codesight.inverseSort.title%",
+				"icon": {
+					"dark": "resources/icons/sort/sort-down-dark.svg",
+					"light": "resources/icons/sort/sort-down-light.svg"
+				},
+				"enablement": "codesight.setupComplete && !codesight.localViewSimpleView"
+			},
+			{
+				"command": "codesight.inverseSortDown",
+				"title": "%command.codesight.inverseSort.title%",
+				"icon": {
+					"dark": "resources/icons/sort/sort-up-dark.svg",
+					"light": "resources/icons/sort/sort-up-light.svg"
+				},
+				"enablement": "codesight.setupComplete && !codesight.localViewSimpleView"
+			},
+			{
+				"command": "codesight.sort.team.view.issues",
+				"title": "%command.codesight.sortIssues.title%",
+				"icon": {
+					"dark": "resources/icons/sort/sort-up-down-dark.svg",
+					"light": "resources/icons/sort/sort-up-down-light.svg"
+				},
+				"enablement": "codesight.setupComplete && !codesight.teamViewSimpleView"
+			},
+			{
+				"command": "codesight.clearSourceFilter",
+				"title": "%command.codesight.clearSourceFilter.title%",
+				"icon": {
+					"dark": "resources/icons/close-dark.svg",
+					"light": "resources/icons/close-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.local.view.clearSearchFilter",
+				"title": "%command.codesight.clearSearchFilter.title%",
+				"icon": {
+					"dark": "resources/icons/close-dark.svg",
+					"light": "resources/icons/close-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.openSetup",
+				"title": "%command.codesight.openSetup.title%",
+				"icon": {
+					"dark": "resources/icons/general/add_circle_dark.svg",
+					"light": "resources/icons/general/add_circle_light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.cancelJob",
+				"title": "%command.codesight.cancelJob.title%",
+				"icon": {
+					"dark": "resources/icons/close-dark.svg",
+					"light": "resources/icons/close-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.openHelp",
+				"title": "%command.codesight.openHelp.title%",
+				"icon": {
+					"dark": "resources/icons/general/question-mark-grey-dark.svg",
+					"light": "resources/icons/general/question-mark-grey-light.svg"
+				}
+			},
+			{
+				"command": "codesight.configure",
+				"title": "%command.codesight.configure.title%",
+				"icon": {
+					"dark": "resources/icons/general/settings-dark.svg",
+					"light": "resources/icons/general/settings-light.svg"
+				}
+			},
+			{
+				"command": "codesight.edit.polaris.server.info",
+				"title": "%command.codesight.edit.polaris.server.info.title%",
+				"icon": {
+					"dark": "resources/icons/general/edit-dark.svg",
+					"light": "resources/icons/general/edit-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.edit.srm.server.info",
+				"title": "%command.codesight.edit.srm.server.info.title%",
+				"icon": {
+					"dark": "resources/icons/general/edit-dark.svg",
+					"light": "resources/icons/general/edit-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.edit.coverity.server.info",
+				"title": "%command.codesight.edit.coverity.server.info.title%",
+				"icon": {
+					"dark": "resources/icons/general/edit-dark.svg",
+					"light": "resources/icons/general/edit-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.edit.black.duck.server.info",
+				"title": "%command.codesight.edit.black.duck.server.info.title%",
+				"icon": {
+					"dark": "resources/icons/general/edit-dark.svg",
+					"light": "resources/icons/general/edit-light.svg"
+				},
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.view.local.view.scan.details",
+				"title": "%command.codesight.view.local.view.scan.details.title%",
+				"icon": "$(symbol-reference)",
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.export.logs",
+				"title": "%command.codesight.export.logs.title%",
+				"icon": {
+					"dark": "resources/icons/general/save-dark.svg",
+					"light": "resources/icons/general/save-light.svg"
+				}
+			},
+			{
+				"command": "codesight.openSigmaInstallLocation",
+				"title": "%command.codesight.openSigmaInstallLocation%",
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.openDetectConfig",
+				"title": "%command.codesight.openDetectConfig%",
+				"enablement": "codesight.setupComplete"
+			},
+			{
+				"command": "codesight.openTeamViewIssueSourceView",
+				"title": "%command.codesight.openTeamViewIssueSourceView%",
+				"enablement": "codesight.setupComplete",
+				"icon": {
+					"dark": "resources/icons/general/settings-dark.svg",
+					"light": "resources/icons/general/settings-light.svg"
+				}
+			},
+			{
+				"command": "codesight.open.remote.issue.list.error",
+				"title": "%command.codesight.open.remote.issue.list.error%",
+				"enablement": "codesight.setupComplete",
+				"icon": "$(symbol-reference)"
+			},
+			{
+				"command": "codesight.open.local.issue.list.error",
+				"title": "%command.codesight.open.local.issue.list.error%",
+				"enablement": "codesight.setupComplete",
+				"icon": "$(symbol-reference)"
+			},
+			{
+				"command": "codesight.openTeamViewFilterView.filtersApplied",
+				"title": "%command.codesight.openTeamViewFilterView%",
+				"enablement": "codesight.setupComplete && !codesight.teamViewSimpleView",
+				"icon": {
+					"dark": "resources/icons/filter-dark.svg",
+					"light": "resources/icons/filter-light.svg"
+				}
+			},
+			{
+				"command": "codesight.openTeamViewFilterView.noFiltersApplied",
+				"title": "%command.codesight.openTeamViewFilterView%",
+				"enablement": "codesight.setupComplete && !codesight.teamViewSimpleView",
+				"icon": {
+					"dark": "resources/icons/filter-hollow-dark.svg",
+					"light": "resources/icons/filter-hollow-light.svg"
+				}
+			},
+			{
+				"command": "codesight.teamViewFilterView.disableActiveFileFilter",
+				"title": "%command.codesight.disableActiveFileFilter%",
+				"enablement": "codesight.setupComplete && !codesight.teamViewSimpleView",
+				"icon": {
+					"dark": "resources/icons/file-filter-dark.svg",
+					"light": "resources/icons/file-filter-light.svg"
+				}
+			},
+			{
+				"command": "codesight.teamViewFilterView.enableActiveFileFilter",
+				"title": "%command.codesight.enableActiveFileFilter%",
+				"enablement": "codesight.setupComplete && !codesight.teamViewSimpleView",
+				"icon": {
+					"dark": "resources/icons/file-filter-hollow-dark.svg",
+					"light": "resources/icons/file-filter-hollow-light.svg"
+				}
+			},
+			{
+				"command": "codesight.lock.local.issue",
+				"title": "%command.codesight.lockIssue%",
+				"when": "codesight.setupComplete && codesight.editorMarkersEnabled",
+				"icon": {
+					"dark": "resources/icons/general/lock-dark.svg",
+					"light": "resources/icons/general/lock-light.svg"
+				}
+			},
+			{
+				"command": "codesight.lock.remote.issue",
+				"title": "%command.codesight.lockIssue%",
+				"when": "codesight.setupComplete && codesight.editorMarkersEnabled",
+				"icon": {
+					"dark": "resources/icons/general/lock-dark.svg",
+					"light": "resources/icons/general/lock-light.svg"
+				}
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "codesight",
+					"title": "%view.codesight.title%",
+					"icon": "resources/icons/blackduck-hollow.svg"
+				}
+			]
+		},
+		"views": {
+			"codesight": [
+				{
+					"id": "codesight-local-view",
+					"name": "%view.local.view.title%",
+					"when": "codesight.setupComplete"
+				},
+				{
+					"id": "codesight-team-view",
+					"name": "%view.team.view.title%",
+					"when": "codesight.setupComplete"
+				},
+				{
+					"id": "codesight-status-view",
+					"name": "%view.status.title%",
+					"when": "codesight.setupComplete"
+				},
+				{
+					"id": "codesight-setup-status",
+					"name": "%view.setup.title%",
+					"visibility": "collapsed",
+					"when": "!codesight.setupComplete"
+				},
+				{
+					"id": "codesight-help-view",
+					"name": "%view.help.title%",
+					"visibility": "collapsed",
+					"type": "webview"
+				}
+			]
+		},
+		"menus": {
+			"editor/title": [
+				{
+					"command": "codesight.show.local.view.markers",
+					"group": "navigation@1",
+					"when": "codesight.setupComplete && !codesight.localViewMarkers && resourceScheme == file && codesight.editorMarkersEnabled && codesight.isEditorMarkersEnabledFromSettings && codesight.hasLocalViewResults"
+				},
+				{
+					"command": "codesight.show.team.view.markers",
+					"group": "navigation@1",
+					"when": "codesight.setupComplete && codesight.localViewMarkers && resourceScheme == file && codesight.editorMarkersEnabled && codesight.isEditorMarkersEnabledFromSettings && codesight.hasTeamViewResults"
+				}
+			],
+			"view/title": [
+				{
+					"command": "codesight.openAutoScanConfig",
+					"when": "view == codesight-local-view && codesight.scanMode == 'auto'",
+					"group": "1"
+				},
+				{
+					"command": "codesight.openAutoScanConfig",
+					"when": "view == codesight-local-view && codesight.scanMode == 'manual' && codesight.aiEnabled",
+					"group": "1"
+				},
+				{
+					"command": "codesight.openScanConfig",
+					"when": "view == codesight-local-view && codesight.scanMode == 'manual' && !codesight.aiEnabled",
+					"group": "1"
+				},
+				{
+					"command": "codesight.local.view.issues.restore.full.list",
+					"when": "view == codesight-local-view && codesight.localViewSimpleView",
+					"group": "navigation@1"
+				},
+				{
+					"command": "codesight.local.view.search",
+					"when": "view == codesight-local-view",
+					"group": "navigation@1"
+				},
+				{
+					"command": "codesight.local.view.export.results",
+					"when": "view == codesight-local-view && codesight.setupComplete && codesight.scanMode == 'manual' && codesight.hasExportableResultsFile",
+					"group": "2"
+				},
+				{
+					"command": "codesight.local.view.export.results.disabled.not.manual",
+					"when": "view == codesight-local-view && codesight.setupComplete && codesight.scanMode != 'manual'",
+					"group": "2"
+				},
+				{
+					"command": "codesight.local.view.export.results.disabled.unsupported.scan.type",
+					"when": "view == codesight-local-view && codesight.setupComplete && codesight.scanMode == 'manual' && !codesight.isScanTypeSupported",
+					"group": "2"
+				},
+				{
+					"command": "codesight.local.view.export.results.disabled.no.results",
+					"when": "view == codesight-local-view && codesight.setupComplete && codesight.scanMode == 'manual' && codesight.isScanTypeSupported && !codesight.hasExportableResultsFile",
+					"group": "2"
+				},
+				{
+					"command": "codesight.local.view.scan",
+					"when": "view == codesight-local-view && !codesight.localViewManualScanRunning && codesight.scanMode == 'manual' && !codesight.aiEnabled",
+					"group": "navigation@3"
+				},
+				{
+					"command": "codesight.local.view.cancel.scan",
+					"when": "view == codesight-local-view && codesight.localViewManualScanRunning && codesight.scanMode == 'manual' && !codesight.aiEnabled",
+					"group": "navigation@3"
+				},
+				{
+					"command": "codesight.local.view.issues.sort.select",
+					"when": "view == codesight-local-view && !codesight.localViewScanRunning && codesight.scanMode == 'manual' && codesight.local.view.sort.visible",
+					"group": "navigation@2"
+				},
+				{
+					"command": "codesight.openLocalViewFilterView.filtersApplied",
+					"when": "view == codesight-local-view && codesight.scanMode == 'manual' && codesight.showLocalViewFilter && codesight.hasLocalViewFiltersApplied && !codesight.signalView",
+					"group": "navigation@2"
+				},
+				{
+					"command": "codesight.openLocalViewFilterView.noFiltersApplied",
+					"when": "view == codesight-local-view && codesight.scanMode == 'manual' && codesight.showLocalViewFilter && !codesight.hasLocalViewFiltersApplied && !codesight.signalView",
+					"group": "navigation@2"
+				},
+				{
+					"command": "codesight.localViewFilterView.disableActiveFileFilter",
+					"when": "view == codesight-local-view && codesight.scanMode == 'manual' && codesight.showLocalViewFilter && codesight.editorMarkersEnabled && codesight.hasLocalViewActiveFileFilter && !codesight.aiEnabled",
+					"group": "navigation@2"
+				},
+				{
+					"command": "codesight.localViewFilterView.enableActiveFileFilter",
+					"when": "view == codesight-local-view && codesight.scanMode == 'manual' && codesight.showLocalViewFilter && codesight.editorMarkersEnabled && !codesight.hasLocalViewActiveFileFilter && !codesight.aiEnabled",
+					"group": "navigation@2"
+				},
+				{
+					"command": "codesight.ai.enable",
+					"when": "view == codesight-local-view && codesight.signalView && codesight.scanMode == 'auto' && !codesight.aiEnabled",
+					"group": "navigation@3"
+				},
+				{
+					"command": "codesight.ai.disable",
+					"when": "view == codesight-local-view && codesight.signalView && codesight.aiEnabled",
+					"group": "navigation@3"
+				},
+				{
+					"command": "codesight.signal.view.refresh",
+					"when": "view == codesight-local-view && codesight.scanMode == 'manual' && codesight.aiEnabled && !codesight.localViewSignalScanRunning",
+					"group": "navigation@1"
+				},
+				{
+					"command": "codesight.signal.view.cancel",
+					"when": "view == codesight-local-view && codesight.scanMode == 'manual' && codesight.aiEnabled && codesight.localViewSignalScanRunning",
+					"group": "navigation@1"
+				},
+				{
+					"command": "codesight.sigma.changed.file.refresh",
+					"when": "view == codesight-local-view && codesight.scanMode == 'auto' && codesight.scanFilesScopeChangedFiles && !codesight.localViewSigmaChangedFileScanRunning",
+					"group": "navigation@1"
+				},
+				{
+					"command": "codesight.sigma.changed.file.cancel",
+					"when": "view == codesight-local-view && codesight.scanMode == 'auto' && codesight.scanFilesScopeChangedFiles && codesight.localViewSigmaChangedFileScanRunning",
+					"group": "navigation@1"
+				},
+				{
+					"command": "codesight.scan.disabled",
+					"when": "view == codesight-local-view && !codesight.localViewScanRunning && codesight.scanMode == 'auto' && !codesight.signalView",
+					"group": "navigation@3"
+				},
+				{
+					"command": "codesight.openHelp",
+					"when": "view == codesight-extension-status || view == codesight-setup-status",
+					"group": "navigation"
+				},
+				{
+					"command": "codesight.configure",
+					"when": "view == codesight-extension-status",
+					"group": "navigation"
+				},
+				{
+					"command": "codesight.openTeamViewIssueSourceView",
+					"when": "view == codesight-team-view",
+					"group": "navigation@4"
+				},
+				{
+					"command": "codesight.team.view.issues.restore.full.list",
+					"when": "view == codesight-team-view && codesight.teamViewSimpleView",
+					"group": "navigation@1"
+				},
+				{
+					"command": "codesight.refresh.remote",
+					"when": "view == codesight-team-view && codesight.issueSourceSelected",
+					"group": "navigation"
+				},
+				{
+					"command": "codesight.sort.team.view.issues",
+					"when": "view == codesight-team-view && codesight.team.view.issue.sort.visible",
+					"group": "navigation@3"
+				},
+				{
+					"command": "codesight.openTeamViewFilterView.filtersApplied",
+					"when": "view == codesight-team-view && codesight.issueSourceSelected && codesight.showTeamViewFilter && codesight.hasFiltersApplied",
+					"group": "navigation@2"
+				},
+				{
+					"command": "codesight.openTeamViewFilterView.noFiltersApplied",
+					"when": "view == codesight-team-view && codesight.issueSourceSelected && codesight.showTeamViewFilter && !codesight.hasFiltersApplied",
+					"group": "navigation@2"
+				},
+				{
+					"command": "codesight.teamViewFilterView.disableActiveFileFilter",
+					"when": "view == codesight-team-view && codesight.issueSourceSelected && codesight.editorMarkersEnabled && codesight.teamViewServerTypeSupportsActiveFileFilter && codesight.hasActiveFileFilter",
+					"group": "navigation@1"
+				},
+				{
+					"command": "codesight.teamViewFilterView.enableActiveFileFilter",
+					"when": "view == codesight-team-view && codesight.issueSourceSelected && codesight.editorMarkersEnabled && codesight.teamViewServerTypeSupportsActiveFileFilter && !codesight.hasActiveFileFilter",
+					"group": "navigation@1"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "codesight.copyTreeItem",
+					"when": "viewItem != codesight:copyAllIssues"
+				},
+				{
+					"command": "codesight.copyAllIssues",
+					"when": "viewItem =~ /codesight:.*copyAllIssues.*/"
+				},
+				{
+					"command": "codesight.diffSource.all",
+					"when": "view == codesight-local-view && viewItem =~ /(?!.*selectedDiffSourceAll.*)codesight:.*scopeState.*/",
+					"group": "inline@1"
+				},
+				{
+					"command": "codesight.diffSource.new",
+					"when": "view == codesight-local-view && viewItem =~ /(?!.*selectedDiffSourceNew.*)codesight:.*scopeState.*/",
+					"group": "inline@3"
+				},
+				{
+					"command": "codesight.diffSource.fixed",
+					"when": "view == codesight-local-view && viewItem =~ /(?!.*selectedDiffSourceFixed.*)codesight:.*scopeState.*/",
+					"group": "inline@2"
+				},
+				{
+					"command": "codesight.diffSource.all.pressed",
+					"when": "view == codesight-local-view && viewItem =~ /codesight:.*scopeState.*/ && viewItem =~ /codesight:.*selectedDiffSourceAll.*/",
+					"group": "inline@1"
+				},
+				{
+					"command": "codesight.diffSource.new.pressed",
+					"when": "view == codesight-local-view && viewItem =~ /codesight:.*scopeState.*/ && viewItem =~ /codesight:.*selectedDiffSourceNew.*/",
+					"group": "inline@3"
+				},
+				{
+					"command": "codesight.diffSource.fixed.pressed",
+					"when": "view == codesight-local-view && viewItem =~ /codesight:.*scopeState.*/ && viewItem =~ /codesight:.*selectedDiffSourceFixed.*/",
+					"group": "inline@2"
+				},
+				{
+					"command": "codesight.inverseSortUp",
+					"when": "viewItem =~ /codesight:.*sortStateUp.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.inverseSortDown",
+					"when": "viewItem =~ /codesight:.*sortStateDown.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.clearSourceFilter",
+					"when": "viewItem =~ /codesight:.*(sourceFilter).*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.local.view.clearSearchFilter",
+					"when": "viewItem =~ /codesight:.*(search).*/ && view == codesight-local-view",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.cancelJob",
+					"when": "viewItem =~ /codesight:.*cancellableScanJob.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.openSetup",
+					"when": "viewItem =~ /codesight:.*openOnboarding.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.edit.polaris.server.info",
+					"when": "viewItem =~ /codesight:.*editPolarisServerInfo.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.edit.srm.server.info",
+					"when": "viewItem =~ /codesight:.*editSRMServerInfo.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.edit.coverity.server.info",
+					"when": "viewItem =~ /codesight:.*editCoverityServerInfo.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.edit.black.duck.server.info",
+					"when": "viewItem =~ /codesight:.*editBlackDuckServerInfo.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.view.local.view.scan.details",
+					"when": "viewItem =~ /codesight:.*viewLocalViewScanDetails.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.export.logs",
+					"when": "viewItem =~ /codesight:.*exportLogs.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.open.remote.issue.list.error",
+					"when": "viewItem =~ /codesight:.*viewRemoteErrorDetails.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.open.local.issue.list.error",
+					"when": "viewItem =~ /codesight:.*viewRemoteErrorDetails.*/",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.lock.local.issue",
+					"when": "view == codesight-local-view && viewItem =~ /codesight:.*lockLocalIssueItem.*/ && !codesight.localViewSimpleView && codesight.scanMode == 'manual' && codesight.editorMarkersEnabled",
+					"group": "inline"
+				},
+				{
+					"command": "codesight.lock.remote.issue",
+					"when": "view == codesight-team-view && viewItem =~ /codesight:.*lockRemoteIssueItem.*/ && !codesight.teamViewSimpleView && codesight.editorMarkersEnabled",
+					"group": "inline"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "codesight.copyTreeItem",
+					"when": "false"
+				},
+				{
+					"command": "codesight.copyAllIssues",
+					"when": "false"
+				},
+				{
+					"command": "codesight.open.remote.issue.list.error",
+					"when": "false"
+				},
+				{
+					"command": "codesight.open.local.issue.list.error",
+					"when": "false"
+				},
+				{
+					"command": "codesight.local.view.clearSearchFilter",
+					"when": "false"
+				},
+				{
+					"command": "codesight.clearSourceFilter",
+					"when": "false"
+				},
+				{
+					"command": "codesight.inverseSortUp",
+					"when": "false"
+				},
+				{
+					"command": "codesight.inverseSortDown",
+					"when": "false"
+				},
+				{
+					"command": "codesight.diffSource.all",
+					"when": "false"
+				},
+				{
+					"command": "codesight.diffSource.all.pressed",
+					"when": "false"
+				},
+				{
+					"command": "codesight.diffSource.new",
+					"when": "false"
+				},
+				{
+					"command": "codesight.diffSource.new.pressed",
+					"when": "false"
+				},
+				{
+					"command": "codesight.diffSource.fixed",
+					"when": "false"
+				},
+				{
+					"command": "codesight.diffSource.fixed.pressed",
+					"when": "false"
+				},
+				{
+					"command": "codesight.cancelJob",
+					"when": "false"
+				},
+				{
+					"command": "codesight.local.view.scan",
+					"when": "false"
+				},
+				{
+					"command": "codesight.scan.disabled",
+					"when": "false"
+				},
+				{
+					"command": "codesight.turn.off.auto.mode",
+					"when": "false"
+				},
+				{
+					"command": "codesight.turn.on.auto.mode",
+					"when": "false"
+				},
+				{
+					"command": "codesight.local.view.cancel.scan",
+					"when": "false"
+				},
+				{
+					"command": "codesight.local.view.issues.sort.select",
+					"when": "false"
+				},
+				{
+					"command": "codesight.sort.team.view.issues",
+					"when": "false"
+				},
+				{
+					"command": "codesight.teamViewFilterView.enableActiveFileFilter",
+					"when": "false"
+				},
+				{
+					"command": "codesight.teamViewFilterView.disableActiveFileFilter",
+					"when": "false"
+				},
+				{
+					"command": "codesight.localViewFilterView.enableActiveFileFilter",
+					"when": "false"
+				},
+				{
+					"command": "codesight.localViewFilterView.disableActiveFileFilter",
+					"when": "false"
+				},
+				{
+					"command": "codesight.openTeamViewFilterView.filtersApplied",
+					"when": "codesight.setupComplete && codesight.showTeamViewFilter && codesight.issueSourceSelected && codesight.hasFiltersApplied"
+				},
+				{
+					"command": "codesight.openTeamViewFilterView.noFiltersApplied",
+					"when": "codesight.setupComplete && codesight.showTeamViewFilter && codesight.issueSourceSelected && !codesight.hasFiltersApplied"
+				}
+			]
+		},
+		"configuration": {
+			"title": "%view.codesight.title%",
+			"properties": {
+				"codeSight.telemetry.enablement": {
+					"type": "boolean",
+					"default": false,
+					"scope": "application",
+					"markdownDescription": "%config.codeSight.telemetry.enablement%",
+					"description": "%config.codeSight.telemetry.enablement%"
+				},
+				"codeSight.markers.enablement": {
+					"type": "boolean",
+					"default": true,
+					"description": "%config.codeSight.markers.enablement%"
+				},
+				"codeSight.markers.highlighting.issueUnderlineColor": {
+					"type": "string",
+					"default": "rgba(146, 135, 218, 1)",
+					"markdownDescription": "%config.codeSight.markers.highlighting.issueUnderlineColor%",
+					"description": "%config.codeSight.markers.highlighting.issueUnderlineColor%"
+				},
+				"codeSight.markers.highlighting.newIssueUnderlineColor": {
+					"type": "string",
+					"default": "rgba(248, 128, 112, 1)",
+					"markdownDescription": "%config.codeSight.markers.highlighting.newIssueUnderlineColor%",
+					"description": "%config.codeSight.markers.highlighting.newIssueUnderlineColor%"
+				},
+				"codeSight.warnings.showAll": {
+					"type": "boolean",
+					"scope": "application",
+					"default": true,
+					"description": "Show all warning pop-ups (e.g. Workspace Is Empty, Custom Build Command Not Found, and so on)"
+				},
+				"codeSight.scan.tool.configuration": {
+					"type": "string",
+					"default": "%config.codeSight.click.link.in.description%",
+					"enum": [
+						"%config.codeSight.click.link.in.description%"
+					],
+					"enumDescriptions": [
+						"%config.codeSight.scan.tool.configuration.description%"
+					],
+					"markdownDescription": "You can configure which scan engines Code Sight will use to scan your code, and customize incremental scan settings, in the [Code Sight Incremental Scan Config window](command:codesight.openAutoScanConfig)"
+				},
+				"codeSight.config.settings": {
+					"type": "string",
+					"default": "%config.codeSight.settings.link.desc%",
+					"enum": [
+						"%config.codeSight.settings.link.desc%"
+					],
+					"enumDescriptions": [
+						"%config.codeSight.settings.enum.desc%"
+					],
+					"markdownDescription": "%config.codeSight.settings.markdown%"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"compile": "gulp lintChecks && tsc -p ./tsconfig.json && tsc-alias -p ./tsconfig.json",
+		"watch": "tsc -watch -p ./tsconfig.json && tsc-alias -p ./tsconfig.json",
+		"coverage": "gulp compile && gulp prepareTestWorkspace && gulp cover:clean && gulp rename-dist",
+		"prepare-test-workspace": "gulp prepareTestWorkspace",
+		"webpack": "gulp lintChecks && webpack --mode development",
+		"webpack-no-lint": "gulp header-copyright && webpack --mode development",
+		"pre-test": "npm run compile && gulp rename-dist && gulp prepareTestWorkspace",
+		"post-test": "gulp restore-dist",
+		"postinstall": "cd webview-ui && npm install && cd ..",
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"*.ts": "eslint"
+	},
+	"dependencies": {
+		"@codesight/codesight-controller": "2026.4.0-6",
+		"@codesight/codesight-controller-proto": "2026.4.0-1",
+		"@grpc/grpc-js": "1.3.2",
+		"@types/google-protobuf": "3.15.7",
+		"@types/vscode": "^1.90.0",
+		"@vscode/codicons": "^0.0.33",
+		"@vscode/test-electron": "2.4.1",
+		"child_process": "^1.0.2",
+		"fs-extra": "^11.1.1",
+		"google-protobuf": "3.21.2",
+		"markdown-it": "^10.0.0",
+		"mkdirp": "^0.5.1",
+		"moment": "2.24.0",
+		"node-dependency-injection": "2.7.0",
+		"prex": "0.4.6",
+		"source-map-support": "^0.5.16",
+		"tabulator-tables": "5.4.3",
+		"tmp": "^0.2.1",
+		"tsc-alias": "^1.8.8",
+		"typescript-collections": "1.3.3",
+		"vscode-languageclient": "^7.0.0",
+		"vscode-nls": "4.1.1",
+		"winston": "3.3.4"
+	},
+	"devDependencies": {
+		"@types/chai": "4.2.7",
+		"@types/fs-extra": "^8.0.1",
+		"@types/glob": "^7.1.1",
+		"@types/mkdirp": "^0.5.2",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.12.17",
+		"@types/sinon": "^10.0.6",
+		"@types/tmp": "^0.2.3",
+		"@types/yargs": "^17.0.24",
+		"@typescript-eslint/eslint-plugin": "^6.0.0",
+		"@vscode/vsce": "2.19.0",
+		"chai": "4.3.7",
+		"chai-subset": "^1.6.0",
+		"css-loader": "^6.8.1",
+		"del": "5.1.0",
+		"eslint": "^8.45.0",
+		"event-stream": "^4.0.1",
+		"glob": "^7.1.6",
+		"gulp": "4.0.2",
+		"gulp-cli": "2.2.0",
+		"gulp-eslint-new": "^1.9.1",
+		"gulp-filter": "^6.0.0",
+		"gulp-json-editor": "^2.5.4",
+		"gulp-plugin-alias": "^2.2.4",
+		"gulp-sourcemaps": "^2.6.5",
+		"gulp-ts-alias-fix": "^2.2.4",
+		"gulp-typescript": "5.0.1",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.2",
+		"mocha": "11.1.0",
+		"nyc": "^15.1.0",
+		"sinon": "^12.0.1",
+		"style-loader": "^3.3.3",
+		"ts-loader": "9.4.4",
+		"tsconfig-paths-webpack-plugin": "^4.1.0",
+		"typescript": "^4.9.5",
+		"vscode-nls-dev": "4.0.4",
+		"webpack": "5.94.0",
+		"webpack-cli": "5.1.4",
+		"yargs": "^17.7.2"
+	},
+	"overrides": {
+		"gulp-typescript": {
+			"source-map": "0.7.4"
+		}
+	},
+	"__metadata": {
+		"installedTimestamp": 1776371068758,
+		"targetPlatform": "universal",
+		"size": 200224643
+	}
+}

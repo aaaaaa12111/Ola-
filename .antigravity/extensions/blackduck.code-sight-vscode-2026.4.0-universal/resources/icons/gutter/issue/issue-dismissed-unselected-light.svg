@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>ban</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,0.25 C3.7198125,0.25 0.25,3.71978125 0.25,8 C0.25,12.2802187 3.7198125,15.75 8,15.75 C12.2801875,15.75 15.75,12.2801875 15.75,8 C15.75,3.7198125 12.2802187,0.25 8,0.25 Z M12.065875,3.934125 C14.111125,5.979375 14.253375,9.10540625 12.7120313,11.2977812 L4.7021875,3.288 C6.8960625,1.745625 10.02175,1.89003125 12.065875,3.934125 Z M3.934125,12.065875 C1.888875,10.020625 1.746625,6.89459375 3.28796875,4.70221875 L11.2978125,12.712 C9.10396875,14.254375 5.97825,14.11 3.934125,12.065875 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Solid/ban">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#C46161" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <path d="M3.934125,12.065875 C1.888875,10.020625 1.746625,6.89459375 3.28796875,4.70221875 L11.2978125,12.712 C9.10396875,14.254375 5.97825,14.11 3.934125,12.065875 Z" id="Path" fill="#4F7E38" fill-rule="evenodd" mask="url(#mask-2)"></path>
+            <g id="Green" mask="url(#mask-2)" fill="#89B335" fill-rule="evenodd">
+                <rect id="SWIP-Granny" x="0" y="0" width="16" height="16"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

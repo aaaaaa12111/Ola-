@@ -1,0 +1,4 @@
+# Ola AI Ecosystem Dependencies
+huggingface_hub>=0.20.0
+flake8>=6.0.0
+pytest>=7.0.0

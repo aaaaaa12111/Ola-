@@ -1,0 +1,8 @@
+﻿05/05/2026 20:14:29 czas środkowoeuropejski standardowy : Information : Local timezone is (UTC+01:00) czas środkowoeuropejski (Warszawa)
+05/05/2026 20:14:29 czas środkowoeuropejski standardowy : Information : Acquiring semaphore to try to start the Controller.
+05/05/2026 20:14:29 czas środkowoeuropejski standardowy : Information : Beginning to try to start the Controller.
+05/05/2026 20:14:29 czas środkowoeuropejski standardowy : Information : Starting hub controller
+05/05/2026 20:14:29 czas środkowoeuropejski standardowy : Information : Setting environment variable 'ServiceHubCurrentOsLocale' to 'pl' in the "/Users/macbook/.vscode/extensions/ms-dotnettools.csdevkit-3.10.14-darwin-x64/components/vs-green-server/platforms/darwin-x64/node_modules/@microsoft/visualstudio-controller.darwin-x64/Microsoft.VisualStudio.Code.ServiceController" process.
+05/05/2026 20:14:29 czas środkowoeuropejski standardowy : Information : Setting environment variable 'ServiceHubLocationServicePipeName' to '5ac5059d28' in the "/Users/macbook/.vscode/extensions/ms-dotnettools.csdevkit-3.10.14-darwin-x64/components/vs-green-server/platforms/darwin-x64/node_modules/@microsoft/visualstudio-controller.darwin-x64/Microsoft.VisualStudio.Code.ServiceController" process.
+05/05/2026 20:14:30 czas środkowoeuropejski standardowy : Information : Attempting to connect to location service pipe at '5ac5059d28'.
+05/05/2026 20:14:45 czas środkowoeuropejski standardowy : Information : Hub controller started. PID 63351

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>FS-LIGHT-2 Artboard-1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M14.2857143,0 L1.71428571,0 C0.767857143,0 0,0.767857143 0,1.71428571 L0,14.2857143 C0,15.2321429 0.767857143,16 1.71428571,16 L14.2857143,16 C15.2321429,16 16,15.2321429 16,14.2857143 L16,1.71428571 C16,0.767857143 15.2321429,0 14.2857143,0 Z" id="path-1"></path>
+    </defs>
+    <g id="ICONS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-202.000000, -1859.000000)">
+            <g id="FS-LIGHT-2-Artboard" transform="translate(202.000000, 1859.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g id="Black" mask="url(#mask-2)" fill="#000000">
+                    <g transform="translate(-1.000000, -1.000000)">
+                        <rect x="0" y="0" width="18" height="18"></rect>
+                    </g>
+                </g>
+                <rect id="R9" fill="#FFFFFF" mask="url(#mask-2)" x="9" y="9" width="5" height="5"></rect>
+                <rect id="R7" fill="#FFFFFF" mask="url(#mask-2)" x="2" y="9" width="5" height="5"></rect>
+                <rect id="R3" fill="#FFFFFF" mask="url(#mask-2)" x="9" y="2" width="5" height="5"></rect>
+                <rect id="R1" fill="#FFFFFF" mask="url(#mask-2)" x="2" y="2" width="5" height="5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

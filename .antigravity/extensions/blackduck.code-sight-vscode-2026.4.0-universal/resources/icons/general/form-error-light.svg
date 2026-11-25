@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>exclamation-circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M15.75,8 C15.75,12.2811563 12.2799062,15.75 8,15.75 C3.72009375,15.75 0.25,12.2811563 0.25,8 C0.25,3.72134375 3.72009375,0.25 8,0.25 C12.2799062,0.25 15.75,3.72134375 15.75,8 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Solid/exclamation-circle">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="Purple---100%" mask="url(#mask-2)" fill="#5A2A82" fill-rule="evenodd">
+                <rect id="Purple" x="0" y="0" width="16" height="16"></rect>
+            </g>
+            <path d="M8,9.5625 C7.20609375,9.5625 6.5625,10.2060938 6.5625,11 C6.5625,11.7939062 7.20609375,12.4375 8,12.4375 C8.79390625,12.4375 9.4375,11.7939062 9.4375,11 C9.4375,10.2060938 8.79390625,9.5625 8,9.5625 Z" id="Path" fill="#FFFFFF" fill-rule="evenodd" mask="url(#mask-2)"></path>
+            <path d="M6.63521875,4.3954375 L6.86703125,8.6454375 C6.877875,8.8443125 7.0423125,9 7.24146875,9 L8.75853125,9 C8.9576875,9 9.122125,8.8443125 9.13296875,8.6454375 L9.36478125,4.3954375 C9.3765,4.180625 9.20546875,4 8.99034375,4 L7.009625,4 C6.7945,4 6.6235,4.180625 6.63521875,4.3954375 Z" id="Path" fill="#FFFFFF" fill-rule="evenodd" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

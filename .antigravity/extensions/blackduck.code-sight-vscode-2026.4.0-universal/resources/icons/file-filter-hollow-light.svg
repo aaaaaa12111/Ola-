@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <g>
+        <!-- File document outline -->
+        <path fill="#616161"
+            d="M370 20H90C69.01 20 52 37.01 52 58v396c0 20.99 17.01 38 38 38h332c20.99 0 38-17.01 38-38V158L370 20zM75 70h310v360H75V70z" />
+        <!-- File corner fold -->
+        <path fill="#424242"
+            d="M370 20v138h90L370 20z" />
+        <!-- File content lines -->
+        <path fill="#424242"
+            d="M80 180h260v20H80zm0 60h260v20H80zm0 60h200v20H80zm0 60h260v20H80zm0 60h180v20H80z" />
+    </g>
+</svg>

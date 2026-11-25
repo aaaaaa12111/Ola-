@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ola AI Ecosystem — Portal & Asystent</title>
+  <meta name="description" content="Kompleksowy portal Ekosystemu Ola AI połączony z interaktywnym czatem, przewodnikiem po Nowym Jorku oraz panelem analitycznym danych.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- NAVBAR HEADER -->
+  <header class="navbar">
+    <a href="#" class="brand">
+      <div class="brand-icon">🌟</div>
+      <div>
+        <span class="brand-title">Ola AI Portal</span>
+        <span class="brand-badge">v3.5 Engine</span>
+      </div>
+    </a>
+
+    <nav>
+      <ul class="nav-links">
+        <li><button class="nav-btn active" data-tab="tab-chat" id="btn-tab-chat"><i class="fa-solid fa-comments"></i> Asystent AI</button></li>
+        <li><button class="nav-btn" data-tab="tab-nyc" id="btn-tab-nyc"><i class="fa-solid fa-city"></i> Przewodnik NYC</button></li>
+        <li><button class="nav-btn" data-tab="tab-analytics" id="btn-tab-analytics"><i class="fa-solid fa-chart-line"></i> Analityka & Sprzedaż</button></li>
+        <li><button class="nav-btn" data-tab="tab-finance" id="btn-tab-finance"><i class="fa-solid fa-coins"></i> Raport Finansowy</button></li>
+        <li><button class="nav-btn" data-tab="tab-contact" id="btn-tab-contact"><i class="fa-solid fa-paper-plane"></i> Kontakt</button></li>
+      </ul>
+    </nav>
+
+    <div class="status-indicator">
+      <div class="pulse-dot"></div>
+      <span>Model Phi-3.5 Online</span>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container">
+
+    <!-- 1. TAB: CHAT AI -->
+    <section id="tab-chat" class="tab-content active">
+      <div class="hero">
+        <h1 class="hero-title">Witaj w Ekosystemie Ola AI</h1>
+        <p class="hero-subtitle">Twój lokalny inteligentny asystent wspierany przez silnik Phi-3.5-mini-instruct. Zadaj dowolne pytanie po polsku!</p>
+      </div>
+
+      <div class="chat-wrapper">
+        <aside class="chat-sidebar">
+          <div class="sidebar-title"><i class="fa-solid fa-bolt"></i> Szybkie pytania</div>
+          <div class="quick-prompts">
+            <button class="prompt-card" onclick="sendQuickPrompt('Co warto zobaczyć w Nowym Jorku?')">
+              🏙️ Co warto zobaczyć w Nowym Jorku?
+            </button>
+            <button class="prompt-card" onclick="sendQuickPrompt('Jakie są najlepsze muzea w Nowym Jorku?')">
+              🖼️ Najlepsze muzea w Nowym Jorku
+            </button>
+            <button class="prompt-card" onclick="sendQuickPrompt('Jak analizować dane o sprzedaży produktów?')">
+              📈 Analiza rynku i sprzedaży produktów
+            </button>
+            <button class="prompt-card" onclick="sendQuickPrompt('Przedstaw statystyki przejazdów ze zbioru train.csv')">
+              🚕 Statystyki przejazdów taxi NYC
+            </button>
+          </div>
+        </aside>
+
+        <div class="chat-box">
+          <div class="chat-header">
+            <div class="avatar-info">
+              <div class="avatar-icon">🌟</div>
+              <div>
+                <div class="avatar-name">Ola AI</div>
+                <div class="avatar-desc">Lokalna Asystentka AI (Phi-3.5 GGUF)</div>
+              </div>
+            </div>
+            <button class="nav-btn" onclick="clearChat()" style="font-size:0.85rem;"><i class="fa-solid fa-trash"></i> Wyczyść</button>
+          </div>
+
+          <div class="chat-messages" id="chat-messages">
+            <div class="message bot">
+              <div class="message-bubble">
+                Cześć! Jestem Ola — Twoja lokalna asystentka AI. W czym mogę Ci dzisiaj pomóc? Znam m.in. atrakcje Nowego Jorku oraz zbiory danych sprzedażowych!
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-input-area">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Napisz wiadomość do Oli..." onkeydown="handleKeyPress(event)">
+            <button class="send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i> Wyślij</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TAB: NOWY JORK PRZEWODNIK -->
+    <section id="tab-nyc" class="tab-content">
+      <div class="hero">
+        <h1 class="hero-title">Nowy Jork — Przewodnik i Atrakcje</h1>
+        <p class="hero-subtitle">Poznaj najważniejsze atrakcje, muzea, kulinaria i historię Wielkiego Jabłka (The Big Apple).</p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <span class="card-tag">Atrakcje</span>
+          <h3 class="card-title">Statua Wolności & Times Square</h3>
+          <p class="card-text">Statua Wolności to uniwersalny symbol wolności i demokracji. Times Square – serce Manhattanu tętniące życiem 24 godziny na dobę.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-tag">Muzea</span>
+          <h3 class="card-title">The Metropolitan Museum of Art</h3>
+          <p class="card-text">Met (The Met) to jedno z największych i najważniejszych muzeów sztuki na świecie, posiadające ponad 2 miliony eksponatów z całego globu.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-tag">Muzea</span>
+          <h3 class="card-title">MoMA (Museum of Modern Art)</h3>
+          <p class="card-text">Mekka sztuki nowoczesnej, w której zobaczysz m.in. 'Gwiaździstą Noc' Vincenta van Gogha oraz dzieła Picassa i Warhola.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-tag">Kulinaria</span>
+          <h3 class="card-title">Kultowe Nowojorskie Bajgle & Pizza</h3>
+          <p class="card-text">Nowojorska pizza na cienkim cieście oraz tradycyjne bajgle z serkiem szafirowym i łososiem to obowiązkowe punkty kulinarnej wyprawy.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-tag">Historia</span>
+          <h3 class="card-title">Most Brookliński & Wall Street</h3>
+          <p class="card-text">Ukończony w 1883 roku Most Brookliński oraz historyczne centrum finansowe na Wall Street z budynkiem Nowojorskiej Giełdy (NYSE).</p>
+        </div>
+
+        <div class="card">
+          <span class="card-tag">Natura & Widoki</span>
+          <h3 class="card-title">Central Park & Empire State Building</h3>
+          <p class="card-text">Zielone płuca Nowego Jorku o powierzchni 341 hektarów oraz legendarny wieżowiec oferujący zapierającą dech w piersiach panoramę miasta.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TAB: ANALITYKA & SPRZEDAŻ -->
+    <section id="tab-analytics" class="tab-content">
+      <div class="hero">
+        <h1 class="hero-title">Dashboard Analityczny & Sprzedaż</h1>
+        <p class="hero-subtitle">Wizualizacja statystyk zbiorów danych `polski csv` (`train_cleaned.csv` oraz `train_dla_oli.csv`).</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Liczba rekordów</div>
+          <div class="stat-value">1,458,644</div>
+          <div class="stat-change"><i class="fa-solid fa-arrow-up"></i> +12% r/r</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Średni czas trwania tras</div>
+          <div class="stat-value">959 sek</div>
+          <div class="stat-change"><i class="fa-solid fa-clock"></i> ~16 minut</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Główny Dostawca (Vendor)</div>
+          <div class="stat-value">Vendor 2</div>
+          <div class="stat-change" style="color:var(--accent);"><i class="fa-solid fa-chart-pie"></i> 53.2% udziału</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Średnia liczba pasażerów</div>
+          <div class="stat-value">1.66</div>
+          <div class="stat-change"><i class="fa-solid fa-user-group"></i> Osoby / kurs</div>
+        </div>
+      </div>
+
+      <div class="charts-container">
+        <div class="chart-card">
+          <h3 class="card-title" style="margin-bottom:1rem;">Rozkład Natężenia Przejazdów w Godzinach Doby</h3>
+          <canvas id="hourlyChart" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 class="card-title" style="margin-bottom:1rem;">Udział Liczby Pasażerów</h3>
+          <canvas id="passengerChart" height="220"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TAB: RAPORT FINANSOWY -->
+    <section id="tab-finance" class="tab-content">
+      <div class="hero">
+        <h1 class="hero-title">Raport Finansowy & Wyniki Sprzedaży</h1>
+        <p class="hero-subtitle">Szczegółowa analiza przychodów, marżowości oraz wyników finansowych ekosystemu.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Całkowity Przychód</div>
+          <div class="stat-value">4,850,000 PLN</div>
+          <div class="stat-change"><i class="fa-solid fa-arrow-up"></i> +18.4% r/r</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Zysk Netto</div>
+          <div class="stat-value">1,280,000 PLN</div>
+          <div class="stat-change"><i class="fa-solid fa-chart-line"></i> Marża 26.4%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Średnia Wartość Zamówienia (AOV)</div>
+          <div class="stat-value">245.50 PLN</div>
+          <div class="stat-change" style="color:var(--accent);"><i class="fa-solid fa-arrow-up"></i> +8.2% m/m</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Koszt Pozyskania (CAC)</div>
+          <div class="stat-value">42.00 PLN</div>
+          <div class="stat-change"><i class="fa-solid fa-check"></i> Efektywność ROI 380%</div>
+        </div>
+      </div>
+
+      <div class="charts-container" style="margin-bottom:2rem;">
+        <div class="chart-card">
+          <h3 class="card-title" style="margin-bottom:1rem;">Kwartalny Przychód vs Koszty & Zysk</h3>
+          <canvas id="financeTrendChart" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 class="card-title" style="margin-bottom:1rem;">Struktura Przychodów wg Kategorii</h3>
+          <canvas id="revenueCategoryChart" height="220"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title" style="margin-bottom:1rem;">Podsumowanie Kwartalne 2026</h3>
+        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.92rem; color:var(--text-muted);">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border-glass); color:var(--text-main);">
+              <th style="padding:0.8rem;">Kwartał</th>
+              <th style="padding:0.8rem;">Przychód</th>
+              <th style="padding:0.8rem;">Koszty Operacyjne</th>
+              <th style="padding:0.8rem;">Zysk Netto</th>
+              <th style="padding:0.8rem;">Wzrost r/r</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:0.8rem; color:#ffffff; font-weight:600;">Q1 2026</td>
+              <td style="padding:0.8rem;">1,120,000 PLN</td>
+              <td style="padding:0.8rem;">820,000 PLN</td>
+              <td style="padding:0.8rem; color:var(--success);">300,000 PLN</td>
+              <td style="padding:0.8rem; color:var(--success);">+15.2%</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:0.8rem; color:#ffffff; font-weight:600;">Q2 2026</td>
+              <td style="padding:0.8rem;">1,250,000 PLN</td>
+              <td style="padding:0.8rem;">910,000 PLN</td>
+              <td style="padding:0.8rem; color:var(--success);">340,000 PLN</td>
+              <td style="padding:0.8rem; color:var(--success);">+17.8%</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:0.8rem; color:#ffffff; font-weight:600;">Q3 2026</td>
+              <td style="padding:0.8rem;">1,380,000 PLN</td>
+              <td style="padding:0.8rem;">990,000 PLN</td>
+              <td style="padding:0.8rem; color:var(--success);">390,000 PLN</td>
+              <td style="padding:0.8rem; color:var(--success);">+21.4%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. TAB: KONTAKT -->
+    <section id="tab-contact" class="tab-content">
+      <div class="hero">
+        <h1 class="hero-title">Skontaktuj się z Zespołem Oli</h1>
+        <p class="hero-subtitle">Masz pytania dotyczące wdrożenia modeli AI lub analizy danych? Napisz do nas!</p>
+      </div>
+
+      <div style="max-width:600px; margin:0 auto;" class="card">
+        <form onsubmit="handleContactSubmit(event)">
+          <div style="margin-bottom:1.2rem;">
+            <label style="display:block; margin-bottom:0.4rem; color:var(--text-muted); font-size:0.9rem;">Imię i Nazwisko</label>
+            <input type="text" required class="chat-input" style="width:100%;" placeholder="Jan Kowalski">
+          </div>
+          <div style="margin-bottom:1.2rem;">
+            <label style="display:block; margin-bottom:0.4rem; color:var(--text-muted); font-size:0.9rem;">Adres E-mail</label>
+            <input type="email" required class="chat-input" style="width:100%;" placeholder="jan@example.com">
+          </div>
+          <div style="margin-bottom:1.5rem;">
+            <label style="display:block; margin-bottom:0.4rem; color:var(--text-muted); font-size:0.9rem;">Wiadomość</label>
+            <textarea required class="chat-input" style="width:100%; height:120px; resize:vertical;" placeholder="Napisz swoją wiadomość..."></textarea>
+          </div>
+          <button type="submit" class="send-btn" style="width:100%; justify-content:center;"><i class="fa-solid fa-paper-plane"></i> Wyślij Wiadomość</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 Ola AI Ecosystem Portal. Wszystkie prawa zastrzeżone. Zbudowano z użyciem Phi-3.5-mini & Chart.js.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+[pr_reviewer]
+extra_instructions = """
+You are reviewing TypeScript code for a VS Code extension focused on security analysis. Apply these standards:
+
+## CRITICAL Issues (Must Fix Before Merge)
+
+1. **Unused Imports**: Remove all unused imports in modified files.
+   - Rationale: Causes build failures and bloats bundle size
+   - Action: List specific unused imports and require removal
+
+2. **Code Duplication**: Refactor significant duplicated code or boilerplate.
+   - Rationale: Reduces maintainability and increases bug risk
+   - Action: Identify specific locations and suggest refactoring into reusable components
+
+3. **Security Violations**: Block any security vulnerabilities or data exposure.
+   - Rationale: Protects user data and prevents malicious code execution
+   - Action: Reject PRs with security issues, provide specific remediation steps
+
+## HIGH Priority Issues (Should Fix)
+
+4. **Missing Test Coverage**: Ensure adequate test coverage for new/modified code.
+   - Focus: Service logic, error paths, edge cases, gRPC client interactions
+   - Action: Suggest specific test scenarios to add
+
+5. **Documentation Standards**: Require JSDoc for public APIs and complex logic.
+   - Format: Use @param, @returns, @throws, @example as appropriate
+   - Action: Flag missing or inadequate documentation with examples
+
+6. **TypeScript Best Practices**: Enforce strict typing and VS Code extension patterns.
+   - Check: Proper service registration, dependency injection, async/await usage
+   - Action: Suggest improvements for type safety and VS Code API compliance
+
+## MEDIUM Priority Issues (Consider Fixing)
+
+7. **Method Clarity**: Ensure methods follow Single Responsibility Principle.
+   - Check: Clear naming, focused purpose, appropriate parameter ordering
+   - Avoid: Methods that mix UI updates with business logic
+
+8. **Performance Optimization**: Identify inefficient operations.
+   - Focus: Unnecessary async operations, memory leaks, bundle size impact
+   - Action: Suggest specific optimizations
+
+9. **Code Reusability**: Promote common logic extraction.
+   - Check: Similar patterns across services or views
+   - Action: Suggest refactoring into utility functions or base classes
+
+## Review Guidelines
+
+### VS Code Extension Specific Checks
+- **Service Container**: Proper service registration and dependency injection
+- **Event Handling**: Correct listener patterns and cleanup
+- **Webview Communication**: Secure message passing and state management
+- **Extension Lifecycle**: Proper activation/deactivation handling
+- **Threading**: UI operations on main thread, background work properly managed
+
+### Security Focus
+- **Input Validation**: All user inputs sanitized
+- **Credential Handling**: No secrets in logs or exposed in code
+- **gRPC Security**: Proper TLS and authentication
+- **Webview Security**: CSP compliance and secure communication
+
+### TypeScript Quality
+- **Strict Mode**: Full strict type checking compliance
+- **Error Handling**: Structured error propagation with user-friendly messages
+- **Async Patterns**: Consistent Promise-based async/await usage
+- **Interface Design**: Small, focused interfaces following SOLID principles
+
+## Response Format
+Structure feedback as:
+1. **Critical Issues**: Security, build-breaking, or data loss issues
+2. **High Priority**: Missing tests, documentation, or significant quality issues  
+3. **Medium Priority**: Code quality improvements and optimizations
+4. **Suggestions**: Enhancement opportunities and best practices
+
+Always provide:
+- Specific file paths and line numbers
+- Code examples for suggested changes
+- Rationale for each recommendation
+- Priority level for each issue
+
+Focus on changes introduced in this MR while considering the broader codebase context.
+"""
+
+[pr_description]
+extra_instructions = """
+Ensure MR descriptions include:
+- Clear purpose and business context
+- Security implications if applicable
+- Testing approach and coverage
+- Breaking changes or migration notes
+- Related dependencies or follow-up work
+"""

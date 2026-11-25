@@ -1,0 +1,44 @@
+name: Ola AI Ecosystem CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Validate Bash & Embedded Python Syntax
+      run: |
+        bash -n "Desktop/ ola html./start_ola.sh"
+        python3 -c "
+        import re
+        with open('Desktop/ ola html./start_ola.sh') as f:
+            content = f.read()
+        py_code = re.search(r'cat > \"\$PROJECT_DIR/ola.py\" << \'PYEOF\'(.*?)PYEOF', content, re.DOTALL).group(1)
+        compile(py_code, 'ola.py', 'exec')
+        print('✅ Embedded Python Syntax OK')
+        "
+
+    - name: Verify Web Portal Files Existence
+      run: |
+        test -f index.html
+        test -f styles.css
+        test -f app.js
+        echo "✅ Web Portal Files Verified"

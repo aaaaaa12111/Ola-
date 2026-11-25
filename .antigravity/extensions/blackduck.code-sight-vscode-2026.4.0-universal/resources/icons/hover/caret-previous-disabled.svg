@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="12px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>caret-left copy-1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12.1471572,1.1244443 L12.1471572,14.8755794 C12.1471572,15.8277554 10.9920409,16.3045915 10.3164938,15.6313137 L3.41775282,8.75574609 C2.99898763,8.33838756 2.99898763,7.66163617 3.41775282,7.24427764 L10.3164938,0.368710077 C10.9920409,-0.30462122 12.1471572,0.172268343 12.1471572,1.1244443 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Solid/caret-left" transform="translate(-3.000000, 0.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="Gray-Icons" mask="url(#mask-2)" fill="#8C8C8C" fill-rule="evenodd" stroke="#8C8C8C" stroke-width="1">
+                <g transform="translate(-141.500000, -141.500000)">
+                    <rect x="0.5" y="0.5" width="298" height="298"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
